@@ -14,7 +14,7 @@ const culturalsData = [
         description: "Solo and group dance performances across classical, western, and folk genres",
         image: "https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?w=600&h=400&fit=crop",
         teamSize: "1-8 members",
-        registrationStatus: "closed",
+        registrationStatus: "open",
         date: "Feb 14-15, 2025",
         venue: "Main Auditorium"
     },
