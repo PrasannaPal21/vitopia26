@@ -67,30 +67,30 @@ function MerchCard({ item, index, onClick }) {
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
+            transition={{ duration: 0.5, delay: index * 0.05 }}
             whileHover={{ y: -8 }}
             onClick={() => onClick(item)}
-            className="group relative cursor-pointer h-[420px]"
+            className="group relative cursor-pointer h-[420px] w-full"
         >
             {/* Card glow effect */}
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-[var(--accent)] to-[var(--secondary)] rounded-2xl opacity-0 group-hover:opacity-40 blur-xl transition-all duration-500" />
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-[var(--accent)] to-[var(--secondary)] rounded-2xl opacity-0 group-hover:opacity-30 blur-xl transition-all duration-500" />
 
             {/* Main card */}
-            <div className="relative h-full bg-[#0a0a0a] border border-white/5 rounded-2xl overflow-hidden transition-all duration-300 group-hover:border-[var(--accent)]/30">
+            <div className="relative h-full bg-[#0a0a0a] border border-white/5 rounded-2xl overflow-hidden transition-all duration-300 group-hover:border-[var(--accent)]/30 flex flex-col">
                 {/* Image */}
-                <div className="absolute inset-0 h-[70%] overflow-hidden bg-white/5">
+                <div className="absolute inset-0 overflow-hidden">
                     <img
                         src={item.image}
                         alt={item.title}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
-                    {/* Gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent" />
+                    {/* Gradient overlay - strengthened for readability */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent opacity-90" />
                 </div>
 
                 {/* Status badge */}
                 {item.status !== 'available' && (
-                    <div className={`absolute top-4 right-4 z-20 px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm ${item.status === 'sold_out'
+                    <div className={`absolute top-4 right-4 z-20 px-3 py-1 rounded-full text-xs font-medium backdrop-blur-md ${item.status === 'sold_out'
                         ? 'bg-red-500/20 text-red-500 border border-red-500/20'
                         : 'bg-yellow-500/20 text-yellow-500 border border-yellow-500/20'
                         }`}>
@@ -98,23 +98,28 @@ function MerchCard({ item, index, onClick }) {
                     </div>
                 )}
 
-                {/* Content positioned at bottom */}
-                <div className="absolute bottom-0 left-0 right-0 p-6 z-10 h-[35%] bg-[#0a0a0a] border-t border-white/5">
-                    <div className="flex justify-between items-start mb-2">
-                        <div>
-                            <span className="text-[var(--accent)] text-xs font-medium tracking-wider uppercase mb-1 block">
-                                {item.category}
-                            </span>
-                            <h3 className="text-xl font-bold text-white group-hover:text-[var(--accent)] transition-colors duration-300 line-clamp-1">
-                                {item.title}
-                            </h3>
-                        </div>
-                        <span className="text-white font-bold text-lg">{item.price}</span>
-                    </div>
-
-                    <p className="text-white/60 text-sm mb-4 line-clamp-1">
+                {/* Content positioned at bottom with better spacing */}
+                <div className="absolute bottom-0 left-0 right-0 p-6 z-10 flex flex-col justify-end h-full">
+                    <span className="text-[var(--accent)] text-xs font-bold tracking-wider uppercase mb-2">
+                        {item.category}
+                    </span>
+                    <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-[var(--accent)] transition-colors duration-300 leading-tight">
+                        {item.title}
+                    </h3>
+                    <p className="text-white/70 text-sm mb-4 line-clamp-2 leading-relaxed">
                         {item.description}
                     </p>
+
+                    {/* Meta info */}
+                    <div className="flex items-center justify-between text-xs font-medium text-white/50 border-t border-white/10 pt-4 mt-auto">
+                        <span className="text-xl font-bold text-white">{item.price}</span>
+                        <div className="flex items-center gap-2">
+                            <span className="bg-white/10 px-2 py-1 rounded text-white/70">S</span>
+                            <span className="bg-white/10 px-2 py-1 rounded text-white/70">M</span>
+                            <span className="bg-white/10 px-2 py-1 rounded text-white/70">L</span>
+                            <span className="bg-white/10 px-2 py-1 rounded text-white/70">XL</span>
+                        </div>
+                    </div>
                 </div>
 
                 {/* Hover arrow */}
@@ -123,7 +128,7 @@ function MerchCard({ item, index, onClick }) {
                     animate={{ x: [0, 5, 0] }}
                     transition={{ repeat: Infinity, duration: 1.5 }}
                 >
-                    <IconChevronRight className="text-[var(--accent)]" size={20} />
+                    <IconChevronRight className="text-[var(--accent)]" size={24} />
                 </motion.div>
             </div>
         </motion.div>
@@ -140,70 +145,72 @@ function MerchModal({ item, onClose }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-center justify-center p-4 lg:p-8"
         >
             <motion.div
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.9, opacity: 0 }}
+                initial={{ scale: 0.95, opacity: 0, y: 20 }}
+                animate={{ scale: 1, opacity: 1, y: 0 }}
+                exit={{ scale: 0.95, opacity: 0, y: 20 }}
                 onClick={(e) => e.stopPropagation()}
-                className="relative bg-[#0a0a0a] border border-white/10 rounded-3xl overflow-hidden max-w-4xl w-full flex flex-col md:flex-row"
+                className="relative bg-[#0a0a0a] border border-white/10 rounded-3xl overflow-hidden max-w-2xl w-full max-h-[90vh] overflow-y-auto"
             >
-                {/* Close button - Mobile */}
-                <button
-                    onClick={onClose}
-                    className="absolute top-4 right-4 z-50 p-2 rounded-full bg-black/50 backdrop-blur-sm hover:bg-black/70 transition-colors border border-white/10 md:hidden"
-                >
-                    <IconX size={20} className="text-white/80" />
-                </button>
-
-                {/* Image Section */}
-                <div className="w-full md:w-1/2 h-64 md:h-auto relative bg-white/5">
+                {/* Image header */}
+                <div className="relative h-64 sm:h-72 overflow-hidden group">
                     <img
                         src={item.image}
                         alt={item.title}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent md:bg-gradient-to-r" />
-                </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent" />
 
-                {/* Content Section */}
-                <div className="w-full md:w-1/2 p-8 relative flex flex-col justify-center">
-                    {/* Close button - Desktop */}
+                    {/* Close button */}
                     <button
                         onClick={onClose}
-                        className="absolute top-8 right-8 hidden md:block p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors"
+                        className="absolute top-4 right-4 p-2.5 rounded-full bg-black/60 backdrop-blur-md hover:bg-[var(--accent)] hover:text-black transition-all border border-white/10 z-50 group/close"
                     >
-                        <IconX size={20} className="text-white/60" />
+                        <IconX size={20} className="text-white group-hover/close:text-black" />
                     </button>
+                </div>
 
-                    <div className="mb-6">
-                        <span className="inline-block px-3 py-1 rounded-full bg-[var(--accent)]/10 text-[var(--accent)] text-xs font-medium mb-3">
-                            {item.category}
-                        </span>
-                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">{item.title}</h2>
-                        <div className="text-2xl font-semibold text-white/90 mb-4">{item.price}</div>
-                        <p className="text-white/60 leading-relaxed">
-                            {item.description}
-                        </p>
+                {/* Content */}
+                <div className="p-8 -mt-20 relative z-10">
+                    <div className="bg-[#0a0a0a]/80 backdrop-blur-xl border border-white/5 rounded-2xl p-6 mb-8 shadow-2xl">
+                        <div className="flex justify-between items-start">
+                            <div>
+                                <span className="inline-block px-3 py-1 rounded-full bg-[var(--accent)]/10 text-[var(--accent)] text-xs font-semibold uppercase tracking-wider mb-3">
+                                    {item.category}
+                                </span>
+                                <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">{item.title}</h2>
+                            </div>
+                            <div className="text-3xl font-bold text-[var(--accent)]">{item.price}</div>
+                        </div>
+                        <p className="text-white/60 text-lg mt-4">{item.description}</p>
                     </div>
 
-                    <div className="space-y-4 mt-auto">
-                        <div className="grid grid-cols-2 gap-4">
-                            <div className="bg-white/5 rounded-xl p-3 text-center">
-                                <span className="block text-white/40 text-xs mb-1 uppercase tracking-wider">Material</span>
-                                <span className="text-white font-medium">Premium Cotton</span>
+                    {/* Details grid */}
+                    <div className="grid grid-cols-2 gap-4 mb-8">
+                        <div className="bg-white/5 rounded-2xl p-5 border border-white/5 hover:border-[var(--accent)]/30 transition-colors">
+                            <div className="flex items-center gap-2 text-white/40 text-sm mb-2 uppercase tracking-wider font-semibold">
+                                <IconShirt size={18} />
+                                Material
                             </div>
-                            <div className="bg-white/5 rounded-xl p-3 text-center">
-                                <span className="block text-white/40 text-xs mb-1 uppercase tracking-wider">Delivery</span>
-                                <span className="text-white font-medium">3-5 Days</span>
-                            </div>
+                            <div className="text-white text-lg font-medium">100% Cotton (240 GSM)</div>
                         </div>
+                        <div className="bg-white/5 rounded-2xl p-5 border border-white/5 hover:border-[var(--accent)]/30 transition-colors">
+                            <div className="flex items-center gap-2 text-white/40 text-sm mb-2 uppercase tracking-wider font-semibold">
+                                <IconHanger size={18} />
+                                Fit
+                            </div>
+                            <div className="text-white text-lg font-medium">Oversized / Unisex</div>
+                        </div>
+                    </div>
 
+                    {/* Action buttons */}
+                    <div className="space-y-4">
                         {item.status === 'sold_out' ? (
                             <button
                                 disabled
-                                className="w-full bg-white/10 text-white/40 py-4 rounded-xl font-semibold cursor-not-allowed uppercase tracking-wide"
+                                className="w-full bg-white/10 text-white/40 py-4 rounded-xl font-semibold cursor-not-allowed uppercase tracking-wide border border-white/5"
                             >
                                 Sold Out
                             </button>
@@ -212,12 +219,15 @@ function MerchModal({ item, onClose }) {
                                 href={item.link}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="w-full flex items-center justify-center gap-2 bg-[var(--accent)] hover:bg-[var(--accent)]/90 text-white py-4 rounded-xl font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] uppercase tracking-wide"
+                                className="w-full flex items-center justify-center gap-2 bg-[var(--accent)] hover:bg-[var(--accent)]/90 text-white py-4 rounded-xl font-bold text-lg transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-[var(--accent)]/20"
                             >
-                                <IconShoppingBag size={20} />
+                                <IconShoppingBag size={22} />
                                 Buy Now
                             </a>
                         )}
+                        <p className="text-center text-white/30 text-xs">
+                            *Pickup available at University Campus counter from Feb 14th
+                        </p>
                     </div>
                 </div>
             </motion.div>
