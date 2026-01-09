@@ -59,16 +59,42 @@ const TimerSection = () => {
               The ultimate fest experience is just around the corner. Secure your spot now!
             </p>
 
-            <Link
-              href="https://events.vitap.ac.in/e/vitopia-2025-cultural-dd247f1d-90e2-4daa-8615-441050caf953"
-              target="_blank"
-              className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-lime-400 to-green-400 text-black font-anton text-xl md:text-2xl uppercase tracking-widest hover:from-lime-300 hover:to-green-300 transition-all duration-300 shadow-[0_0_30px_rgba(190,242,100,0.6)] hover:shadow-[0_0_50px_rgba(190,242,100,0.8)] hover:scale-105 relative group overflow-hidden"
-            >
-              <span className="relative z-10">Register Now</span>
-              <MdArrowOutward className="relative z-10 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-              {/* Shimmer Effect */}
-              <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/30 to-transparent" />
-            </Link>
+            {/* Creative Geometric Button */}
+            <div className="relative inline-block group">
+              {/* Pulsing Glow Background */}
+              <div className="absolute -inset-4 bg-gradient-to-r from-lime-400 via-green-400 to-lime-400 opacity-30 blur-2xl group-hover:opacity-50 animate-pulse transition-opacity duration-300" />
+
+              <Link
+                href="https://events.vitap.ac.in/e/vitopia-2025-cultural-dd247f1d-90e2-4daa-8615-441050caf953"
+                target="_blank"
+                className="relative block overflow-hidden"
+                style={{
+                  clipPath: 'polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%)'
+                }}
+              >
+                {/* Main Button */}
+                <div className="relative px-12 py-6 bg-gradient-to-r from-lime-400 via-green-400 to-lime-500 text-black font-anton text-xl md:text-2xl uppercase tracking-[0.2em] transition-all duration-300 group-hover:from-lime-300 group-hover:via-green-300 group-hover:to-lime-400">
+                  <div className="flex items-center gap-4 relative z-10">
+                    <span className="group-hover:translate-x-1 transition-transform duration-300">GRAB PASSES</span>
+                    <MdArrowOutward className="text-2xl group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-300" />
+                  </div>
+
+                  {/* Diagonal Shimmer */}
+                  <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12" />
+
+                  {/* Animated Scanline */}
+                  <div className="absolute left-0 right-0 h-[2px] bg-white/60 top-1/2 -translate-y-1/2 group-hover:animate-ping" />
+                </div>
+              </Link>
+
+              {/* Decorative Corner Elements */}
+              <div className="absolute -top-2 -left-2 w-6 h-6 border-t-2 border-l-2 border-lime-400 group-hover:w-8 group-hover:h-8 transition-all duration-300" />
+              <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b-2 border-r-2 border-lime-400 group-hover:w-8 group-hover:h-8 transition-all duration-300" />
+
+              {/* Small Accent Dots */}
+              {/* <div className="absolute -top-1 -right-1 w-2 h-2 bg-lime-400 rounded-full group-hover:scale-150 transition-transform duration-300" />
+              <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-green-400 rounded-full group-hover:scale-150 transition-transform duration-300" /> */}
+            </div>
           </div>
 
           {/* Timer Component Wrapper */}

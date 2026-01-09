@@ -6,6 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { IconMenu2, IconX } from "@tabler/icons-react";
+import { MdArrowOutward } from "react-icons/md";
 
 const navItems = [
   { title: "Home", href: "/" },
@@ -87,12 +88,36 @@ export default function Navbar() {
               </button>
             )}
 
-            <button
-              onClick={handleSignIn}
-              className="px-6 py-2 bg-primary text-black font-anton font-bold uppercase tracking-wider text-lg rounded-sm hover:bg-primary/90 hover:scale-105 transition-all shadow-[0_0_15px_rgba(190,242,100,0.4)]"
-            >
-              Grab Passes
-            </button>
+            <div className="relative inline-block group scale-[0.85] origin-right">
+              {/* Pulsing Glow Background */}
+              <div className="absolute -inset-3 bg-gradient-to-r from-lime-400 via-green-400 to-lime-400 opacity-20 blur-xl group-hover:opacity-40 animate-pulse transition-opacity duration-300" />
+
+              <button
+                onClick={handleSignIn}
+                className="relative block overflow-hidden"
+                style={{
+                  clipPath: 'polygon(12% 0%, 100% 0%, 88% 100%, 0% 100%)'
+                }}
+              >
+                {/* Main Button */}
+                <div className="relative px-8 py-3 bg-gradient-to-r from-lime-400 via-green-400 to-lime-500 text-black font-anton text-lg uppercase tracking-[0.1em] transition-all duration-300 group-hover:from-lime-300 group-hover:via-green-300 group-hover:to-lime-400">
+                  <div className="flex items-center gap-3 relative z-10">
+                    <span className="group-hover:translate-x-1 transition-transform duration-300">GRAB PASSES</span>
+                    <MdArrowOutward className="text-xl group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
+                  </div>
+
+                  {/* Diagonal Shimmer */}
+                  <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12" />
+
+                  {/* Animated Scanline */}
+                  <div className="absolute left-0 right-0 h-[2px] bg-white/60 top-1/2 -translate-y-1/2 group-hover:animate-ping opacity-0 group-hover:opacity-100" />
+                </div>
+              </button>
+
+              {/* Decorative Corner Elements */}
+              <div className="absolute -top-1 -left-1 w-3 h-3 border-t-2 border-l-2 border-lime-400 group-hover:w-5 group-hover:h-5 transition-all duration-300" />
+              <div className="absolute -bottom-1 -right-1 w-3 h-3 border-b-2 border-r-2 border-lime-400 group-hover:w-5 group-hover:h-5 transition-all duration-300" />
+            </div>
           </div>
 
           {/* Mobile Toggle */}
