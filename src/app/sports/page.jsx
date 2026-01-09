@@ -2,62 +2,514 @@
 
 import { Footer } from "@/components/Homepage/sections/footer";
 import Navbar from "@/components/Homepage/sections/navbar";
-import SportsCard from "@/components/SportsPage/sportsCard";
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useState, useRef } from "react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
+import { IconTrophy, IconUsers, IconCalendar, IconMapPin, IconChevronRight, IconX, IconExternalLink } from "@tabler/icons-react";
 
-function SportsList() {
-    const [data, setData] = useState([]);
+// Sports data with enhanced details
+const sportsData = [
+    {
+        id: 1,
+        title: "Cricket",
+        description: "Inter-college cricket championship featuring teams from across the nation",
+        icon: "🏏",
+        image: "https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=600&h=400&fit=crop",
+        teamSize: "11 players",
+        registrationStatus: "closed",
+        date: "Feb 14-16, 2025",
+        venue: "VIT-AP Sports Ground"
+    },
+    {
+        id: 2,
+        title: "Football",
+        description: "High-intensity football league with knockout rounds",
+        icon: "⚽",
+        image: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&h=400&fit=crop",
+        teamSize: "11 players",
+        registrationStatus: "closed",
+        date: "Feb 17-19, 2025",
+        venue: "VIT-AP Football Arena"
+    },
+    {
+        id: 3,
+        title: "Basketball",
+        description: "Regional basketball competition with 3v3 and 5v5 formats",
+        icon: "🏀",
+        image: "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&h=400&fit=crop",
+        teamSize: "5 players",
+        registrationStatus: "closed",
+        date: "Feb 15-17, 2025",
+        venue: "Indoor Stadium"
+    },
+    {
+        id: 4,
+        title: "Volleyball",
+        description: "Exciting volleyball matches with teams competing for glory",
+        icon: "🏐",
+        image: "https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?w=600&h=400&fit=crop",
+        teamSize: "6 players",
+        registrationStatus: "open",
+        registrationLink: "https://vitopia.vitap.ac.in/register",
+        date: "Feb 16-18, 2025",
+        venue: "VIT-AP Sports Complex"
+    },
+    {
+        id: 5,
+        title: "Badminton",
+        description: "Singles and doubles badminton tournament",
+        icon: "🏸",
+        image: "https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?w=600&h=400&fit=crop",
+        teamSize: "1-2 players",
+        registrationStatus: "closed",
+        date: "Feb 14-15, 2025",
+        venue: "Indoor Badminton Court"
+    },
+    {
+        id: 6,
+        title: "Table Tennis",
+        description: "Fast-paced table tennis championship",
+        icon: "🏓",
+        image: "https://images.unsplash.com/photo-1534158914592-062992fbe900?w=600&h=400&fit=crop",
+        teamSize: "1-2 players",
+        registrationStatus: "closed",
+        date: "Feb 14-15, 2025",
+        venue: "TT Hall"
+    },
+    {
+        id: 7,
+        title: "Chess",
+        description: "Strategic chess tournament with rapid and blitz formats",
+        icon: "♟️",
+        image: "https://images.unsplash.com/photo-1529699211952-734e80c4d42b?w=600&h=400&fit=crop",
+        teamSize: "1 player",
+        registrationStatus: "closed",
+        date: "Feb 14, 2025",
+        venue: "Seminar Hall A"
+    },
+    {
+        id: 8,
+        title: "Athletics",
+        description: "Track and field events including sprints and relays",
+        icon: "🏃",
+        image: "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=600&h=400&fit=crop",
+        teamSize: "Individual",
+        registrationStatus: "closed",
+        date: "Feb 18-19, 2025",
+        venue: "VIT-AP Track"
+    }
+];
+
+// Animated counter component
+function AnimatedCounter({ value, suffix = "" }) {
+    const [count, setCount] = useState(0);
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true });
+
+    useEffect(() => {
+        if (isInView) {
+            const duration = 2000;
+            const steps = 60;
+            const increment = value / steps;
+            let current = 0;
+
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= value) {
+                    setCount(value);
+                    clearInterval(timer);
+                } else {
+                    setCount(Math.floor(current));
+                }
+            }, duration / steps);
+
+            return () => clearInterval(timer);
+        }
+    }, [isInView, value]);
+
+    return <span ref={ref}>{count}{suffix}</span>;
+}
+
+// Sport card component with modern design
+function SportCard({ sport, index, onClick }) {
+    return (
+        <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            whileHover={{ y: -8 }}
+            onClick={() => onClick(sport)}
+            className="group relative cursor-pointer h-[380px]"
+        >
+            {/* Card glow effect */}
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)] rounded-2xl opacity-0 group-hover:opacity-40 blur-xl transition-all duration-500" />
+
+            {/* Main card */}
+            <div className="relative h-full bg-[#0a0a0a] border border-white/5 rounded-2xl overflow-hidden transition-all duration-300 group-hover:border-[var(--primary)]/30">
+                {/* Image */}
+                <div className="absolute inset-0 overflow-hidden">
+                    <img
+                        src={sport.image}
+                        alt={sport.title}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    {/* Gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent" />
+                </div>
+
+                {/* Registration status badge */}
+                <div className={`absolute top-4 right-4 z-20 px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm ${sport.registrationStatus === 'open'
+                    ? 'bg-[var(--primary)]/30 text-[var(--primary)] border border-[var(--primary)]/30'
+                    : 'bg-black/50 text-white/60 border border-white/10'
+                    }`}>
+                    {sport.registrationStatus === 'open' ? 'Open' : 'Closed'}
+                </div>
+
+                {/* Content positioned at bottom */}
+                <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
+
+                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[var(--primary)] transition-colors duration-300">
+                        {sport.title}
+                    </h3>
+                    <p className="text-white/60 text-sm mb-4 line-clamp-2">
+                        {sport.description}
+                    </p>
+
+                    {/* Meta info */}
+                    <div className="flex items-center gap-4 text-xs text-white/50">
+                        <span className="flex items-center gap-1">
+                            <IconUsers size={14} />
+                            {sport.teamSize}
+                        </span>
+                        <span className="flex items-center gap-1">
+                            <IconCalendar size={14} />
+                            {sport.date.split(',')[0]}
+                        </span>
+                    </div>
+                </div>
+
+                {/* Hover arrow */}
+                <motion.div
+                    className="absolute bottom-6 right-6 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    animate={{ x: [0, 5, 0] }}
+                    transition={{ repeat: Infinity, duration: 1.5 }}
+                >
+                    <IconChevronRight className="text-[var(--primary)]" size={20} />
+                </motion.div>
+            </div>
+        </motion.div>
+    );
+}
+
+
+// Modal component
+function SportModal({ sport, onClose }) {
+    if (!sport) return null;
+
+    return (
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={onClose}
+            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+        >
+            <motion.div
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                onClick={(e) => e.stopPropagation()}
+                className="relative bg-[#0a0a0a] border border-white/10 rounded-3xl overflow-hidden max-w-lg w-full"
+            >
+                {/* Image header */}
+                <div className="relative h-48 overflow-hidden">
+                    <img
+                        src={sport.image}
+                        alt={sport.title}
+                        className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent" />
+
+                    {/* Close button */}
+                    <button
+                        onClick={onClose}
+                        className="absolute top-4 right-4 p-2 rounded-full bg-black/50 backdrop-blur-sm hover:bg-black/70 transition-colors border border-white/10"
+                    >
+                        <IconX size={20} className="text-white/80" />
+                    </button>
+                </div>
+
+                {/* Content */}
+                <div className="p-8 -mt-12 relative z-10">
+                    {/* Title */}
+                    <h2 className="text-3xl font-bold text-white mb-2">{sport.title}</h2>
+                    <p className="text-white/50 mb-6">{sport.description}</p>
+
+                    {/* Details grid */}
+                    <div className="grid grid-cols-2 gap-4 mb-6">
+                        <div className="bg-white/5 rounded-xl p-4">
+                            <div className="flex items-center gap-2 text-white/40 text-sm mb-1">
+                                <IconUsers size={16} />
+                                Team Size
+                            </div>
+                            <div className="text-white font-medium">{sport.teamSize}</div>
+                        </div>
+                        <div className="bg-white/5 rounded-xl p-4">
+                            <div className="flex items-center gap-2 text-white/40 text-sm mb-1">
+                                <IconCalendar size={16} />
+                                Date
+                            </div>
+                            <div className="text-white font-medium">{sport.date}</div>
+                        </div>
+                        <div className="bg-white/5 rounded-xl p-4 col-span-2">
+                            <div className="flex items-center gap-2 text-white/40 text-sm mb-1">
+                                <IconMapPin size={16} />
+                                Venue
+                            </div>
+                            <div className="text-white font-medium">{sport.venue}</div>
+                        </div>
+                    </div>
+
+                    {/* Action buttons */}
+                    <div className="flex gap-3">
+                        <a
+                            href="https://universitywebsitbucket.s3.ap-south-1.amazonaws.com/vitopia/Final+Rules+%26+Regulations.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex-1 flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 text-white py-3 px-4 rounded-xl transition-colors"
+                        >
+                            <IconExternalLink size={18} />
+                            Rules & Regulations
+                        </a>
+                        {sport.registrationStatus === 'open' ? (
+                            <a
+                                href={sport.registrationLink || '#'}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex-1 flex items-center justify-center gap-2 bg-[var(--primary)] hover:bg-[var(--primary)]/90 text-black font-semibold py-3 px-4 rounded-xl transition-all hover:scale-105 active:scale-95"
+                            >
+                                Register Now
+                            </a>
+                        ) : (
+                            <button
+                                className="flex-1 bg-white/10 text-white/40 py-3 px-4 rounded-xl cursor-not-allowed"
+                                disabled
+                            >
+                                Registrations Closed
+                            </button>
+                        )}
+                    </div>
+                </div>
+            </motion.div>
+        </motion.div>
+    );
+}
+
+// Main page component
+function SportsPage() {
+    const [selectedSport, setSelectedSport] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        setIsLoading(true);
-        const fetchData = async () => {
-            const response = await fetch(`/api/fetch/sports`, {
-                headers: {
-                    'Authorization': `Bearer ${process.env.NEXT_API_TOKEN}`,
-                    'Content-Type': 'application/json'
-                }
-            });
-            const data = await response.json();
-
-            setData(data.events);
-            setIsLoading(false);
-        };
-        fetchData();
+        const timer = setTimeout(() => setIsLoading(false), 500);
+        return () => clearTimeout(timer);
     }, []);
 
     if (isLoading) {
         return (
-            <div className="flex items-center justify-center md:h-[60vh]">
-                <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-neutral-500"></div>
+            <div className="bg-[#050505] min-h-screen flex items-center justify-center">
+                <motion.div
+                    animate={{
+                        scale: [1, 1.2, 1],
+                        opacity: [0.5, 1, 0.5]
+                    }}
+                    transition={{
+                        duration: 1.5,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                    }}
+                    className="w-16 h-16 rounded-full border-2 border-[var(--primary)] border-t-transparent"
+                    style={{ animation: 'spin 1s linear infinite' }}
+                />
             </div>
         );
     }
 
     return (
-        <div className="bg-black min-h-screen flex flex-col items-center relative">
+        <div className="bg-[#050505] min-h-screen">
             <Navbar />
-            <div className="pt-44 px-16 sm:px-24 md:px-32 lg:px-40 text-xl w-full">
-                <ul className="space-y-3 text-white">
-                    <motion.li whileHover={{ x: 10 }} className="flex items-center">
-                        • All sports playing days include free lodging (50 km away) and food.
-                    </motion.li>
-                    <motion.li whileHover={{ x: 10 }} className="flex items-center">
-                        • All Cricket Registrations are stopped and fixtures will be shared soon.
-                    </motion.li>
-                </ul>
-            </div>
-            <div className="flex flex-wrap justify-center items-center w-full p-4 py-20">
-                {data.map(event => (
-                    <div className="p-4 md:w-1/3 lg:w-1/4"> {/* Adjusting card size based on the screen size */}
-                        <SportsCard key={event.id} beach={event} />
+
+            {/* Hero Section */}
+            <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden pt-20">
+                {/* Animated background */}
+                <div className="absolute inset-0">
+                    {/* Grid pattern */}
+                    <div
+                        className="absolute inset-0 opacity-[0.03]"
+                        style={{
+                            backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
+                            backgroundSize: '60px 60px'
+                        }}
+                    />
+
+                    {/* Gradient orbs */}
+                    <motion.div
+                        className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-[var(--primary)]/10 blur-[120px]"
+                        animate={{
+                            scale: [1, 1.2, 1],
+                            opacity: [0.3, 0.5, 0.3]
+                        }}
+                        transition={{ duration: 8, repeat: Infinity }}
+                    />
+                    <motion.div
+                        className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-[var(--secondary)]/10 blur-[100px]"
+                        animate={{
+                            scale: [1.2, 1, 1.2],
+                            opacity: [0.3, 0.5, 0.3]
+                        }}
+                        transition={{ duration: 10, repeat: Infinity }}
+                    />
+                </div>
+
+                {/* Content */}
+                <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                    >
+                        {/* Badge */}
+                        <motion.div
+                            className="inline-flex items-center gap-2 bg-[var(--primary)]/10 border border-[var(--primary)]/20 rounded-full px-4 py-2 mb-8"
+                            animate={{ y: [0, -5, 0] }}
+                            transition={{ duration: 3, repeat: Infinity }}
+                        >
+                            <IconTrophy className="text-[var(--primary)]" size={18} />
+                            <span className="text-[var(--primary)] text-sm font-medium">VITOPIA 2025 Sports</span>
+                        </motion.div>
+
+                        {/* Title */}
+                        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 tracking-tight">
+                            <span className="block">COMPETE.</span>
+                            <span className="block bg-gradient-to-r from-[var(--primary)] via-[var(--secondary)] to-[var(--accent)] bg-clip-text text-transparent">
+                                CONQUER.
+                            </span>
+                            <span className="block">CELEBRATE.</span>
+                        </h1>
+
+                        {/* Subtitle */}
+                        <p className="text-white/50 text-lg md:text-xl max-w-2xl mx-auto mb-10">
+                            Join the ultimate sporting extravaganza featuring 8+ sports disciplines,
+                            thousands of athletes, and unforgettable moments.
+                        </p>
+
+                        {/* Stats */}
+                        <div className="flex flex-wrap justify-center gap-8 md:gap-16">
+                            {[
+                                { value: 8, suffix: "+", label: "Sports" },
+                                { value: 500, suffix: "+", label: "Participants" },
+                                { value: 3, suffix: "", label: "Days" }
+                            ].map((stat, i) => (
+                                <motion.div
+                                    key={i}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.5 + i * 0.1 }}
+                                    className="text-center"
+                                >
+                                    <div className="text-4xl md:text-5xl font-bold text-white mb-1">
+                                        <AnimatedCounter value={stat.value} suffix={stat.suffix} />
+                                    </div>
+                                    <div className="text-white/40 text-sm uppercase tracking-wider">
+                                        {stat.label}
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </motion.div>
+                </div>
+
+
+            </section>
+
+
+
+            {/* Sports Grid Section */}
+            <section className="py-20 px-4">
+                <div className="max-w-6xl mx-auto">
+                    {/* Section header */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-center mb-16"
+                    >
+                        <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+                            Featured Sports
+                        </h2>
+                        <p className="text-white/50 max-w-xl mx-auto">
+                            Explore our lineup of thrilling sports competitions
+                        </p>
+                    </motion.div>
+
+                    {/* Sports grid */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        {sportsData.map((sport, index) => (
+                            <SportCard
+                                key={sport.id}
+                                sport={sport}
+                                index={index}
+                                onClick={setSelectedSport}
+                            />
+                        ))}
                     </div>
-                ))}
-            </div>
+                </div>
+            </section>
+
+            {/* CTA Section */}
+            <section className="py-20 px-4">
+                <div className="max-w-4xl mx-auto">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[var(--primary)]/20 via-[#0a0a0a] to-[var(--secondary)]/10 border border-white/5 p-12 text-center"
+                    >
+                        {/* Background decoration */}
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-[var(--primary)]/10 rounded-full blur-[80px]" />
+                        <div className="absolute bottom-0 left-0 w-48 h-48 bg-[var(--secondary)]/10 rounded-full blur-[60px]" />
+
+                        <div className="relative z-10">
+                            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                                Ready for the Challenge?
+                            </h2>
+                            <p className="text-white/50 mb-8 max-w-xl mx-auto">
+                                While registrations are closed, stay tuned for fixture announcements and live updates during the event.
+                            </p>
+                            <a
+                                href="https://universitywebsitbucket.s3.ap-south-1.amazonaws.com/vitopia/Final+Rules+%26+Regulations.pdf"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 bg-[var(--primary)] text-black font-semibold px-8 py-4 rounded-full hover:bg-[var(--primary)]/90 transition-all hover:scale-105 active:scale-95"
+                            >
+                                <IconExternalLink size={20} />
+                                View Rules & Regulations
+                            </a>
+                        </div>
+                    </motion.div>
+                </div>
+            </section>
+
             <Footer />
+
+            {/* Modal */}
+            <AnimatePresence>
+                {selectedSport && (
+                    <SportModal sport={selectedSport} onClose={() => setSelectedSport(null)} />
+                )}
+            </AnimatePresence>
         </div>
     );
 }
 
-export default SportsList;
+export default SportsPage;
