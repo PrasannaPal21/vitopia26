@@ -127,16 +127,16 @@ function EventCard({ event, index, onClick }) {
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
+            transition={{ duration: 0.5, delay: index * 0.05 }}
             whileHover={{ y: -8 }}
             onClick={() => onClick(event)}
-            className="group relative cursor-pointer h-[380px]"
+            className="group relative cursor-pointer h-[420px] w-full"
         >
             {/* Card glow effect */}
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)] rounded-2xl opacity-0 group-hover:opacity-40 blur-xl transition-all duration-500" />
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-[var(--secondary)] to-[var(--accent)] rounded-2xl opacity-0 group-hover:opacity-30 blur-xl transition-all duration-500" />
 
             {/* Main card */}
-            <div className="relative h-full bg-[#0a0a0a] border border-white/5 rounded-2xl overflow-hidden transition-all duration-300 group-hover:border-[var(--primary)]/30">
+            <div className="relative h-full bg-[#0a0a0a] border border-white/5 rounded-2xl overflow-hidden transition-all duration-300 group-hover:border-[var(--secondary)]/30 flex flex-col">
                 {/* Image */}
                 <div className="absolute inset-0 overflow-hidden">
                     <img
@@ -144,36 +144,35 @@ function EventCard({ event, index, onClick }) {
                         alt={event.title}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
-                    {/* Gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent" />
+                    {/* Gradient overlay - strengthened for readability */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent opacity-90" />
                 </div>
 
                 {/* Registration status badge */}
-                <div className={`absolute top-4 right-4 z-20 px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm ${event.registrationStatus === 'open'
-                    ? 'bg-[var(--primary)]/30 text-[var(--primary)] border border-[var(--primary)]/30'
-                    : 'bg-black/50 text-white/60 border border-white/10'
+                <div className={`absolute top-4 right-4 z-20 px-3 py-1 rounded-full text-xs font-medium backdrop-blur-md border ${event.registrationStatus === 'open'
+                    ? 'bg-[var(--primary)]/20 text-[var(--primary)] border-[var(--primary)]/20'
+                    : 'bg-black/50 text-white/60 border-white/10'
                     }`}>
                     {event.registrationStatus === 'open' ? 'Open' : 'Closed'}
                 </div>
 
-                {/* Content positioned at bottom */}
-                <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
-
-                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[var(--primary)] transition-colors duration-300">
+                {/* Content positioned at bottom with better spacing */}
+                <div className="absolute bottom-0 left-0 right-0 p-6 z-10 flex flex-col justify-end h-full">
+                    <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-[var(--secondary)] transition-colors duration-300 leading-tight">
                         {event.title}
                     </h3>
-                    <p className="text-white/60 text-sm mb-4 line-clamp-2">
+                    <p className="text-white/70 text-sm mb-4 line-clamp-2 leading-relaxed">
                         {event.description}
                     </p>
 
                     {/* Meta info */}
-                    <div className="flex items-center gap-4 text-xs text-white/50">
-                        <span className="flex items-center gap-1">
-                            <IconUsers size={14} />
+                    <div className="flex items-center gap-4 text-xs font-medium text-white/50 border-t border-white/10 pt-4 mt-auto">
+                        <span className="flex items-center gap-1.5">
+                            <IconUsers size={16} className="text-[var(--secondary)]" />
                             {event.teamSize}
                         </span>
-                        <span className="flex items-center gap-1">
-                            <IconCalendar size={14} />
+                        <span className="flex items-center gap-1.5">
+                            <IconCalendar size={16} className="text-[var(--accent)]" />
                             {event.date.split(',')[0]}
                         </span>
                     </div>
@@ -185,7 +184,7 @@ function EventCard({ event, index, onClick }) {
                     animate={{ x: [0, 5, 0] }}
                     transition={{ repeat: Infinity, duration: 1.5 }}
                 >
-                    <IconChevronRight className="text-[var(--primary)]" size={20} />
+                    <IconChevronRight className="text-[var(--secondary)]" size={24} />
                 </motion.div>
             </div>
         </motion.div>
@@ -202,87 +201,89 @@ function EventModal({ event, onClose }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-center justify-center p-4 lg:p-8"
         >
             <motion.div
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.9, opacity: 0 }}
+                initial={{ scale: 0.95, opacity: 0, y: 20 }}
+                animate={{ scale: 1, opacity: 1, y: 0 }}
+                exit={{ scale: 0.95, opacity: 0, y: 20 }}
                 onClick={(e) => e.stopPropagation()}
-                className="relative bg-[#0a0a0a] border border-white/10 rounded-3xl overflow-hidden max-w-lg w-full"
+                className="relative bg-[#0a0a0a] border border-white/10 rounded-3xl overflow-hidden max-w-2xl w-full max-h-[90vh] overflow-y-auto"
             >
                 {/* Image header */}
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-64 sm:h-72 overflow-hidden group">
                     <img
                         src={event.image}
                         alt={event.title}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent" />
 
                     {/* Close button */}
                     <button
                         onClick={onClose}
-                        className="absolute top-4 right-4 p-2 rounded-full bg-black/50 backdrop-blur-sm hover:bg-black/70 transition-colors border border-white/10"
+                        className="absolute top-4 right-4 p-2.5 rounded-full bg-black/60 backdrop-blur-md hover:bg-[var(--secondary)] hover:text-black transition-all border border-white/10 z-50 group/close"
                     >
-                        <IconX size={20} className="text-white/80" />
+                        <IconX size={20} className="text-white group-hover/close:text-black" />
                     </button>
                 </div>
 
                 {/* Content */}
-                <div className="p-8 -mt-12 relative z-10">
-                    {/* Title */}
-                    <h2 className="text-3xl font-bold text-white mb-2">{event.title}</h2>
-                    <p className="text-white/50 mb-6">{event.description}</p>
+                <div className="p-8 -mt-20 relative z-10">
+                    <div className="bg-[#0a0a0a]/80 backdrop-blur-xl border border-white/5 rounded-2xl p-6 mb-8 shadow-2xl">
+                        {/* Title */}
+                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">{event.title}</h2>
+                        <p className="text-white/60 text-lg">{event.description}</p>
+                    </div>
 
                     {/* Details grid */}
-                    <div className="grid grid-cols-2 gap-4 mb-6">
-                        <div className="bg-white/5 rounded-xl p-4">
-                            <div className="flex items-center gap-2 text-white/40 text-sm mb-1">
-                                <IconUsers size={16} />
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                        <div className="bg-white/5 rounded-2xl p-5 border border-white/5 hover:border-[var(--secondary)]/30 transition-colors">
+                            <div className="flex items-center gap-2 text-white/40 text-sm mb-2 uppercase tracking-wider font-semibold">
+                                <IconUsers size={18} />
                                 Team Size
                             </div>
-                            <div className="text-white font-medium">{event.teamSize}</div>
+                            <div className="text-white text-lg font-medium">{event.teamSize}</div>
                         </div>
-                        <div className="bg-white/5 rounded-xl p-4">
-                            <div className="flex items-center gap-2 text-white/40 text-sm mb-1">
-                                <IconCalendar size={16} />
+                        <div className="bg-white/5 rounded-2xl p-5 border border-white/5 hover:border-[var(--secondary)]/30 transition-colors">
+                            <div className="flex items-center gap-2 text-white/40 text-sm mb-2 uppercase tracking-wider font-semibold">
+                                <IconCalendar size={18} />
                                 Date
                             </div>
-                            <div className="text-white font-medium">{event.date}</div>
+                            <div className="text-white text-lg font-medium">{event.date}</div>
                         </div>
-                        <div className="bg-white/5 rounded-xl p-4 col-span-2">
-                            <div className="flex items-center gap-2 text-white/40 text-sm mb-1">
-                                <IconMapPin size={16} />
+                        <div className="bg-white/5 rounded-2xl p-5 border border-white/5 hover:border-[var(--secondary)]/30 transition-colors col-span-1 sm:col-span-2">
+                            <div className="flex items-center gap-2 text-white/40 text-sm mb-2 uppercase tracking-wider font-semibold">
+                                <IconMapPin size={18} />
                                 Venue
                             </div>
-                            <div className="text-white font-medium">{event.venue}</div>
+                            <div className="text-white text-lg font-medium">{event.venue}</div>
                         </div>
                     </div>
 
                     {/* Action buttons */}
-                    <div className="flex gap-3">
+                    <div className="flex flex-col sm:flex-row gap-4">
                         <a
                             href="https://universitywebsitbucket.s3.ap-south-1.amazonaws.com/vitopia/Vitopia+(Prime+Event+Rules)_2025+.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex-1 flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 text-white py-3 px-4 rounded-xl transition-colors"
+                            className="flex-1 flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 text-white py-4 px-6 rounded-xl transition-all font-medium border border-white/5"
                         >
-                            <IconExternalLink size={18} />
-                            Rule Book
+                            <IconExternalLink size={20} />
+                            Rules & Regulations
                         </a>
                         {event.registrationStatus === 'open' ? (
                             <a
                                 href={event.registrationLink || '#'}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex-1 flex items-center justify-center gap-2 bg-[var(--primary)] hover:bg-[var(--primary)]/90 text-black font-semibold py-3 px-4 rounded-xl transition-all hover:scale-105 active:scale-95"
+                                className="flex-1 flex items-center justify-center gap-2 bg-[var(--primary)] hover:bg-[var(--primary)]/90 text-black font-bold py-4 px-6 rounded-xl transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-[var(--primary)]/20"
                             >
                                 Register Now
                             </a>
                         ) : (
                             <button
-                                className="flex-1 bg-white/10 text-white/40 py-3 px-4 rounded-xl cursor-not-allowed"
+                                className="flex-1 bg-white/10 text-white/40 py-4 px-6 rounded-xl cursor-not-allowed font-medium"
                                 disabled
                             >
                                 Registrations Closed
@@ -442,7 +443,7 @@ function CulturalsPage() {
                     </motion.div>
 
                     {/* Events grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                         {culturalsData.map((event, index) => (
                             <EventCard
                                 key={event.id}
