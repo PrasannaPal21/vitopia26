@@ -5,7 +5,7 @@ import { Button } from "../moving-border";
 
 export default function HeroSection() {
     return (
-        <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-background">
+        <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-background py-20">
             {/* Background Elements */}
             <div className="absolute inset-0 bg-grid-pattern opacity-[0.04]" />
 
@@ -13,54 +13,84 @@ export default function HeroSection() {
             <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px]" />
             <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-secondary/20 rounded-full blur-[120px]" />
 
-            <div className="container mx-auto px-6 relative z-10 text-center">
+            <div className="container mx-auto px-6 relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="space-y-6"
+                    className="max-w-5xl mx-auto text-center"
                 >
-                    <div className="inline-block border border-white/20 rounded-full px-4 py-1.5 bg-white/5 backdrop-blur-md mb-4">
-                        <span className="text-secondary font-bold tracking-widest text-xs md:text-sm uppercase">
+                    {/* Badge */}
+                    <motion.div
+                        className="inline-flex items-center border border-lime-400/30 rounded-full px-5 py-2 bg-lime-400/5 backdrop-blur-md mb-8"
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
+                    >
+                        <span className="text-lime-400 font-outfit font-semibold tracking-wider text-xs md:text-sm uppercase">
                             The Ultimate Fest of VIT-AP
                         </span>
-                    </div>
+                    </motion.div>
 
-                    <h1 className="text-[15vw] leading-[0.8] font-anton text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-white/40 uppercase select-none mix-blend-overlay">
+                    {/* Main Title */}
+                    <motion.h1
+                        className="text-[18vw] sm:text-[15vw] md:text-[12vw] leading-[0.85] font-anton text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-white/30 uppercase select-none tracking-tight mb-6"
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.3 }}
+                    >
                         VITOPIA
-                    </h1>
+                    </motion.h1>
 
-                    <div className="flex items-center justify-center gap-4 text-3xl md:text-6xl font-black italic tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent relative bottom-4 md:bottom-8">
-                        <span>SPORT</span>
-                        <span className="text-white mx-2 not-italic font-light opacity-50">x</span>
-                        <span>CULTURE</span>
-                    </div>
+                    {/* Subtitle */}
+                    <motion.div
+                        className="flex items-center justify-center gap-3 md:gap-6 text-2xl md:text-5xl lg:text-6xl font-black italic tracking-tight mb-8"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.4 }}
+                    >
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-lime-400 to-green-400">SPORT</span>
+                        <span className="text-white/40 mx-1 md:mx-2 not-italic font-light text-xl md:text-4xl">×</span>
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">CULTURE</span>
+                    </motion.div>
 
-                    <p className="max-w-xl mx-auto text-gray-400 text-sm md:text-lg font-outfit">
+                    {/* Description */}
+                    <motion.p
+                        className="max-w-2xl mx-auto text-gray-400 text-base md:text-lg lg:text-xl font-outfit leading-relaxed mb-10"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.8, delay: 0.5 }}
+                    >
                         Experience the 3-day saga of adrenaline, art, and innovation.
-                        <br className="hidden md:block" />
+                        <br className="hidden sm:block" />
                         Join us for the most electrifying event of the year.
-                    </p>
+                    </motion.p>
 
-                    <div className="pt-8 flex items-center justify-center gap-4">
-                        <button className="px-8 py-3 bg-white text-black font-bold uppercase tracking-wider hover:bg-gray-200 transition-colors">
+                    {/* CTA Buttons */}
+                    <motion.div
+                        className="flex flex-col sm:flex-row items-center justify-center gap-4"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.6 }}
+                    >
+                        <button className="w-full sm:w-auto px-10 py-4 bg-gradient-to-r from-lime-400 to-green-400 text-black font-anton text-base md:text-lg uppercase tracking-wider hover:from-lime-300 hover:to-green-300 transition-all duration-300 shadow-[0_0_30px_rgba(190,242,100,0.4)] hover:shadow-[0_0_50px_rgba(190,242,100,0.6)] hover:scale-105">
                             View Events
                         </button>
-                        <button className="px-8 py-3 border border-white/20 text-white font-bold uppercase tracking-wider hover:bg-white/10 transition-colors">
+                        <button className="w-full sm:w-auto px-10 py-4 border-2 border-white/20 text-white font-anton text-base md:text-lg uppercase tracking-wider hover:bg-white/10 hover:border-white/40 transition-all duration-300 backdrop-blur-sm">
                             Highlights
                         </button>
-                    </div>
+                    </motion.div>
                 </motion.div>
             </div>
 
             {/* Decorative Ticker */}
-            <div className="absolute bottom-12 w-full border-y border-white/10 py-3 bg-black/50 backdrop-blur-sm overflow-hidden flex">
+            <div className="absolute bottom-0 w-full border-t border-white/10 py-4 bg-black/50 backdrop-blur-sm overflow-hidden">
                 <motion.div
                     className="whitespace-nowrap flex gap-12 text-gray-500 font-mono text-xs uppercase tracking-[0.2em]"
                     animate={{ x: "-100%" }}
-                    transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
+                    transition={{ repeat: Infinity, duration: 25, ease: "linear" }}
                 >
-                    {Array(10).fill("•  Coming Soon  •  Register Now  •  VITOPIA 2025  ").map((item, i) => (
+                    {Array(10).fill("•  Feb 22-24, 2026  •  Register Now  •  VITOPIA  ").map((item, i) => (
                         <span key={i}>{item}</span>
                     ))}
                 </motion.div>

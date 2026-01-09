@@ -2,83 +2,148 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { IconBallFootball, IconMusic, IconCpu } from "@tabler/icons-react";
+import { IconBallFootball, IconMusic, IconCpu, IconStarFilled } from "@tabler/icons-react";
 
 const bentoItems = [
   {
     title: "SPORTS",
     description: "Unleash your inner athlete. 15+ adrenaline pumping events.",
     href: "/sports",
-    icon: <IconBallFootball className="w-12 h-12 text-black" />,
-    color: "bg-primary", // Lime
+    icon: <IconBallFootball className="w-14 h-14" />,
+    color: "from-lime-400 to-green-500",
+    borderColor: "border-lime-400/30",
+    hoverBorderColor: "group-hover:border-lime-400/80",
+    glowColor: "group-hover:shadow-[0_0_40px_rgba(190,242,100,0.4)]",
     size: "col-span-12 md:col-span-8",
   },
   {
     title: "CULTURALS",
     description: "Dance, Music, Drama & more.",
     href: "/culturals",
-    icon: <IconMusic className="w-12 h-12 text-white" />,
-    color: "bg-accent", // Pink
+    icon: <IconMusic className="w-14 h-14" />,
+    color: "from-pink-500 to-rose-600",
+    borderColor: "border-pink-500/30",
+    hoverBorderColor: "group-hover:border-pink-500/80",
+    glowColor: "group-hover:shadow-[0_0_40px_rgba(236,72,153,0.4)]",
     size: "col-span-12 md:col-span-4",
   },
   {
     title: "TECHNICA",
     description: "Hackathons, Robo-wars & Tech-talks.",
     href: "/technica",
-    icon: <IconCpu className="w-12 h-12 text-white" />,
-    color: "bg-secondary", // Purple
+    icon: <IconCpu className="w-14 h-14" />,
+    color: "from-purple-500 to-violet-600",
+    borderColor: "border-purple-500/30",
+    hoverBorderColor: "group-hover:border-purple-500/80",
+    glowColor: "group-hover:shadow-[0_0_40px_rgba(139,92,246,0.4)]",
     size: "col-span-12 md:col-span-4",
   },
   {
     title: "PRO-NITES",
     description: "Star-studded nights you'll never forget.",
     href: "/pronites",
-    icon: null, // Maybe an image here?
-    color: "bg-white",
-    textColor: "text-black",
+    icon: <IconStarFilled className="w-14 h-14" />,
+    color: "from-amber-400 to-orange-500",
+    borderColor: "border-amber-400/30",
+    hoverBorderColor: "group-hover:border-amber-400/80",
+    glowColor: "group-hover:shadow-[0_0_40px_rgba(251,191,36,0.4)]",
     size: "col-span-12 md:col-span-8",
   },
 ];
 
 export default function CardSection() {
   return (
-    <section className="py-24 bg-black relative">
-      <div className="container mx-auto px-6">
-        <div className="mb-12 flex items-end justify-between">
-          <h2 className="text-4xl md:text-6xl font-anton text-white uppercase">
-            Explore <span className="text-stroke text-transparent">Categories</span>
+    <section className="py-24 bg-[#050505] relative overflow-hidden border-y border-white/10">
+      {/* Background Grid */}
+      <div className="absolute inset-0 opacity-5">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(190, 242, 100, 0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(190, 242, 100, 0.1) 1px, transparent 1px)
+            `,
+            backgroundSize: '60px 60px'
+          }}
+        />
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
+        {/* Section Header */}
+        <motion.div
+          className="mb-16 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-5xl md:text-7xl font-anton text-white uppercase mb-4">
+            EXPLORE <span className="text-transparent bg-clip-text bg-gradient-to-r from-lime-400 to-green-400">CATEGORIES</span>
           </h2>
-          <div className="hidden md:block w-32 h-1 bg-white/20 mb-4" />
-        </div>
+          <div className="w-32 h-1 bg-gradient-to-r from-transparent via-lime-400 to-transparent mx-auto" />
+        </motion.div>
 
-        <div className="grid grid-cols-12 gap-4 md:gap-6 auto-rows-[250px]">
+        {/* Bento Grid */}
+        <div className="grid grid-cols-12 gap-4 md:gap-6 auto-rows-[280px]">
           {bentoItems.map((item, idx) => (
-            <Link
+            <motion.div
               key={idx}
-              href={item.href}
-              className={`${item.size} group relative overflow-hidden rounded-md border border-white/10 transition-all hover:scale-[1.01] hover:shadow-2xl`}
+              className={item.size}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: idx * 0.1 }}
             >
-              <div className={`absolute inset-0 ${item.color} opacity-90 transition-opacity group-hover:opacity-100`} />
+              <Link
+                href={item.href}
+                className={`group relative h-full overflow-hidden rounded-2xl border-2 ${item.borderColor} ${item.hoverBorderColor} bg-black/40 backdrop-blur-sm transition-all duration-500 hover:scale-[1.02] ${item.glowColor} block`}
+              >
+                {/* Gradient Background */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-20 transition-opacity duration-500`} />
 
-              {/* Content */}
-              <div className={`relative h-full flex flex-col justify-between p-8 ${item.textColor || 'text-black'}`}>
-                <div className="self-end opacity-50 group-hover:opacity-100 transition-opacity transform group-hover:rotate-12 duration-500">
-                  {item.icon}
+                {/* Grid Pattern Overlay */}
+                <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.08] transition-opacity duration-500"
+                  style={{
+                    backgroundImage: `
+                      linear-gradient(white 1px, transparent 1px),
+                      linear-gradient(90deg, white 1px, transparent 1px)
+                    `,
+                    backgroundSize: '20px 20px'
+                  }}
+                />
+
+                {/* Content */}
+                <div className="relative h-full flex flex-col justify-between p-6 md:p-8">
+                  {/* Icon - Top Right */}
+                  <div className={`self-end text-white/20 group-hover:text-white/40 transition-all duration-500 transform group-hover:scale-110 group-hover:rotate-12`}>
+                    {item.icon}
+                  </div>
+
+                  {/* Text Content - Bottom */}
+                  <div className="space-y-3">
+                    <h3 className="text-3xl md:text-4xl lg:text-5xl font-anton uppercase tracking-tight text-white group-hover:translate-x-1 transition-transform duration-300">
+                      {item.title}
+                    </h3>
+                    <p className="font-outfit text-base md:text-lg text-gray-400 group-hover:text-gray-300 transition-colors duration-300 leading-relaxed">
+                      {item.description}
+                    </p>
+
+                    {/* Explore Arrow */}
+                    <div className="flex items-center gap-2 text-sm font-outfit uppercase tracking-widest text-white/60 group-hover:text-white group-hover:gap-3 transition-all duration-300">
+                      <span>Explore</span>
+                      <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </div>
+                  </div>
                 </div>
 
-                <div>
-                  <h3 className="text-4xl font-anton uppercase tracking-tight mb-2">
-                    {item.title}
-                  </h3>
-                  <p className={`font-outfit text-lg opacity-80 ${item.textColor ? 'text-black' : 'text-black/80'}`}>
-                    {item.description}
-                  </p>
+                {/* Shine Effect on Hover */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                  <div className="absolute top-0 -left-full h-full w-1/2 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-12 group-hover:left-full transition-all duration-1000" />
                 </div>
-              </div>
-
-              {/* Decorative Pattern Overlay */}
-              <div className="absolute inset-0 bg-grid-pattern opacity-[0.1] mix-blend-overlay pointer-events-none" />
-            </Link>
+              </Link>
+            </motion.div>
           ))}
         </div>
       </div>
