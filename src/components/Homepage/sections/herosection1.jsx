@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { Button } from "../moving-border";
 
 export default function HeroSection() {
     return (

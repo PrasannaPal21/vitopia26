@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { signIn, signOut, useSession } from "next-auth/react";
 import { IconMenu2, IconX } from "@tabler/icons-react";
 
 const navItems = [
@@ -16,22 +15,15 @@ const navItems = [
 ];
 
 export default function Navbar() {
-  const { data: session, status } = useSession();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
-  const router = useRouter();
 
-  // Scroll effect
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const handleSignIn = async () => {
-    await signIn("google", { callbackUrl: "/auth/role-bridge" });
-  };
 
   return (
     <>
@@ -77,18 +69,11 @@ export default function Navbar() {
 
           {/* Actions */}
           <div className="hidden md:flex items-center gap-4">
-            {status === "authenticated" ? (
-              <button onClick={() => signOut()} className="text-sm font-bold text-gray-400 hover:text-white uppercase">
-                Sign Out
-              </button>
-            ) : (
-              <button onClick={handleSignIn} className="text-sm font-bold text-gray-400 hover:text-white uppercase transition-colors">
+              <button className="text-sm font-bold text-gray-400 hover:text-white uppercase transition-colors">
                 Login
               </button>
-            )}
 
             <button
-              onClick={handleSignIn}
               className="px-6 py-2 bg-primary text-black font-anton font-bold uppercase tracking-wider text-lg rounded-sm hover:bg-primary/90 hover:scale-105 transition-all shadow-[0_0_15px_rgba(190,242,100,0.4)]"
             >
               Grab Passes
