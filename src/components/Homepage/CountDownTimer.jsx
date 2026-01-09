@@ -34,7 +34,7 @@ const CountdownTimer = () => {
 
   const timerComponents = Object.entries(timeLeft).map(([interval, value], index) => (
     <div key={interval} className="flex flex-col items-center">
-      <span className="font-anton text-[3rem] md:text-[5rem] lg:text-[7rem] font-black leading-none text-white">
+      <span suppressHydrationWarning className="font-anton text-[3rem] md:text-[5rem] lg:text-[7rem] font-black leading-none text-white">
         {value < 10 ? `0${value}` : value}
       </span>
       <small className="font-outfit text-xs md:text-sm lg:text-base text-lime-400 uppercase tracking-[0.15em] md:tracking-[0.2em] mt-1 md:mt-2">
