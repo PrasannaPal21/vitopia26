@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Neon Pulse Theme Palette */
+  --background: #050505;
+  --foreground: #fafafa;
+  
+  --primary: #bef264; /* Lime-400 */
+  --primary-foreground: #1a2e05;
+  
+  --secondary: #8b5cf6; /* Violet-500 */
+  --secondary-foreground: #ffffff;
+  
+  --accent: #ec4899; /* Pink-500 */
+  --accent-foreground: #ffffff;
+  
+  --card: #0a0a0a;
+  --card-foreground: #ffffff;
+  
+  --border: #262626;
+  --input: #262626;
+  --ring: #bef264;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-outfit), sans-serif;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-anton), sans-serif;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .text-stroke {
+    -webkit-text-stroke: 1px currentColor;
+    color: transparent;
+  }
+  
+  .glass-panel {
+    background: rgba(10, 10, 10, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  
+  .neon-glow {
+    box-shadow: 0 0 20px rgba(190, 242, 100, 0.3);
+  }
+}

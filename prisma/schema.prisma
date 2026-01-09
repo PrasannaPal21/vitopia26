@@ -1,0 +1,147 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Users {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  name      String
+  event     String
+  scan      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model sports {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String?
+  startPrice  String
+  endPrice    String
+  imageLink   String
+  link        String
+  rules       Json?
+  firstPrize  String
+  secondPrize String
+  thirdPrize  String
+  totalPrize  String
+  venue       String
+  startDate   String
+  endDate     String
+  startTime   String
+  endTime     String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model primeEvents {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String?
+  startPrice  String
+  endPrice    String
+  imageLink   String
+  link        String
+  rules       Json?
+  firstPrize  String
+  secondPrize String
+  thirdPrize  String
+  totalPrize  String
+  venue       String
+  startDate   String
+  endDate     String
+  startTime   String
+  endTime     String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model loginHistory {
+  id         Int      @id @default(autoincrement())
+  googleId   String
+  email      String
+  name       String
+  image      String
+  role       String
+  event      String?
+  loggedInAt DateTime @default(now())
+}
+
+model Registration {
+  name           String
+  email          String
+  event          String
+  amount         String
+  purchasedAt    DateTime
+  invoiceId      String   @unique
+  orderId        String   @unique
+  receiptId      String   @unique
+  universityName String?
+  coachName      String?
+  coachMobile    String?
+  regType        String
+  scanned        Boolean  @default(false)
+}
+
+model Posters {
+  id         Int      @id @default(autoincrement())
+  eventId    String   @unique
+  image      String
+  name       String
+  regNo      String
+  department String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model scanHistory {
+  id         Int      @id @default(autoincrement())
+  adminEmail String
+  userEmail  String
+  invoiceId  String
+  createdAt  DateTime @default(now())
+}
+
+model TShirtSacn {
+  id         Int      @id @default(autoincrement())
+  adminEmail String
+  userEmail  String
+  invoiceId  String   @unique
+  createdAt  DateTime @default(now())
+}
+
+model issueTshirts {
+  id    Int    @id @default(autoincrement())
+  email String
+}
+
+model CloakRoom {
+  id          Int      @id @default(autoincrement())
+  email       String
+  name        String
+  room        String
+  locker      String
+  invoiceId   String   @unique
+  isReturned  Boolean  @default(false)
+  cloakRoomId Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model availableCloakRoom {
+  id        Int     @id @default(autoincrement())
+  room      String
+  locker    String
+  available Boolean @default(true)
+}
