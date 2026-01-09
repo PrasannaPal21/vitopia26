@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 const CountdownTimer = () => {
   const calculateTimeLeft = () => {
-    const difference = +new Date(`03/07/2025 18:00:00`) - +new Date();
+    const difference = +new Date(`02/22/2026 00:00:00`) - +new Date();
     let timeLeft = {
       days: 0,
       hours: 0,
@@ -32,23 +32,26 @@ const CountdownTimer = () => {
     return () => clearTimeout(timer);
   });
 
-  const timerComponents = Object.keys(timeLeft).map((interval) => {
-    const value = timeLeft[interval];
-    return (
-      <div key={interval} className="flex flex-col items-center mx-4 md:mx-8">
-        <div className="text-white text-5xl md:text-8xl font-anton tracking-wider text-stroke-sm md:text-stroke-md">
-          {value < 10 ? `0${value}` : value}
-        </div>
-        <div className="text-xs md:text-sm text-primary font-bold uppercase tracking-[0.2em] mt-2">
-          {interval}
-        </div>
-      </div>
-    );
-  });
+  const timerComponents = Object.entries(timeLeft).map(([interval, value], index) => (
+    <div key={interval} className="flex flex-col items-center">
+      <span className="font-anton text-[3rem] md:text-[5rem] lg:text-[7rem] font-black leading-none text-white">
+        {value < 10 ? `0${value}` : value}
+      </span>
+      <small className="font-outfit text-xs md:text-sm lg:text-base text-lime-400 uppercase tracking-[0.15em] md:tracking-[0.2em] mt-1 md:mt-2">
+        {interval}
+      </small>
+    </div>
+  ));
 
   return (
-    <div className="flex justify-center flex-wrap gap-4 w-full">
-      {timerComponents.length ? timerComponents : <span className="text-white font-anton text-4xl">Event Started!</span>}
+    <div className="flex flex-nowrap gap-4 md:gap-12 lg:gap-16 justify-center overflow-x-auto">
+      {timerComponents.length ? (
+        timerComponents
+      ) : (
+        <span className="font-anton text-3xl md:text-5xl lg:text-6xl font-black text-white uppercase">
+          EVENT STARTED!
+        </span>
+      )}
     </div>
   );
 };
