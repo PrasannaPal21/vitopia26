@@ -70,9 +70,9 @@ export default function Navbar() {
 
           {/* Actions */}
           <div className="hidden md:flex items-center gap-4">
-              <button className="text-sm cursor-pointer font-bold text-gray-400 hover:text-white uppercase transition-colors">
-                Login
-              </button>
+            <button className="text-sm cursor-pointer font-bold text-gray-400 hover:text-white uppercase transition-colors">
+              Login
+            </button>
 
             <div className="relative inline-block group scale-[0.85] origin-right">
               {/* Pulsing Glow Background */}
@@ -141,26 +141,51 @@ export default function Navbar() {
                 <Link
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`text-4xl font-anton uppercase tracking-widest ${pathname === item.href ? "text-primary text-stroke" : "text-white"
-                    }`}
+                  className={`text-4xl font-anton uppercase tracking-widest ${pathname === item.href ? "text-primary" : "text-white"}`}
                 >
                   {item.title}
                 </Link>
               </motion.div>
             ))}
 
-            <motion.button
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              onClick={() => {
-                setMobileMenuOpen(false);
-                handleSignIn();
-              }}
-              className="mt-8 px-8 py-3 bg-white text-black font-anton text-2xl uppercase rounded hover:bg-gray-200"
+              className="relative inline-block group mt-8"
             >
-              Grab Passes
-            </motion.button>
+              {/* Pulsing Glow Background */}
+              <div className="absolute -inset-4 bg-gradient-to-r from-lime-400 via-green-400 to-lime-400 opacity-30 blur-2xl group-hover:opacity-50 animate-pulse transition-opacity duration-300" />
+
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  handleSignIn();
+                }}
+                className="relative block overflow-hidden"
+                style={{
+                  clipPath: 'polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%)'
+                }}
+              >
+                {/* Main Button */}
+                <div className="relative cursor-pointer px-8 py-4 bg-gradient-to-r from-lime-400 via-green-400 to-lime-500 text-black font-anton text-xl uppercase tracking-[0.15em] transition-all duration-300 group-hover:from-lime-300 group-hover:via-green-300 group-hover:to-lime-400">
+                  <div className="flex items-center gap-3 relative z-10">
+                    <span className="group-hover:translate-x-1 transition-transform duration-300">GRAB PASSES</span>
+                    <MdArrowOutward className="text-xl group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-300" />
+                  </div>
+
+                  {/* Diagonal Shimmer */}
+                  <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12" />
+
+                  {/* Animated Scanline */}
+                  <div className="absolute left-0 right-0 h-[2px] bg-white/60 top-1/2 -translate-y-1/2 group-hover:animate-ping opacity-0 group-hover:opacity-100" />
+                </div>
+              </button>
+
+              {/* Decorative Corner Elements */}
+              <div className="absolute -top-2 -left-2 w-6 h-6 border-t-2 border-l-2 border-lime-400 group-hover:w-8 group-hover:h-8 transition-all duration-300" />
+              <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b-2 border-r-2 border-lime-400 group-hover:w-8 group-hover:h-8 transition-all duration-300" />
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
