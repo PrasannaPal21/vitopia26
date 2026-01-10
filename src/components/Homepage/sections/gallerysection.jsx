@@ -1,8 +1,7 @@
 "use client";
-import React from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
 
 const images = [
     "/last_lineup/jonitha.avif",
@@ -15,6 +14,8 @@ const images = [
 
 export default function GallerySection() {
     const containerRef = useRef(null);
+
+    // Optimized scroll configuration
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ["start end", "end start"]
@@ -44,8 +45,8 @@ export default function GallerySection() {
                 className="mb-16 text-center relative z-10"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.5 }}
             >
                 <h2 className="text-5xl md:text-7xl lg:text-8xl font-anton uppercase mb-4 leading-none">
                     <span className="text-white/10">MEMORIES</span>
@@ -59,44 +60,52 @@ export default function GallerySection() {
             </motion.div>
 
             <div className="flex flex-col gap-6 md:gap-8 relative">
-                {/* Row 1 - Left to Right */}
-                <motion.div style={{ x: x1 }} className="flex gap-6 md:gap-8 w-[200%]">
+                {/* Row 1 - Left to Right - Scroll Linked */}
+                <motion.div
+                    style={{ x: x1, willChange: 'transform' }}
+                    className="flex gap-6 md:gap-8"
+                >
                     {[...images, ...images].map((src, i) => (
                         <div
-                            key={i}
-                            className="relative w-[350px] md:w-[400px] h-[220px] md:h-[250px] shrink-0 rounded-xl overflow-hidden group border-2 border-white/10 hover:border-lime-400/40 transition-all duration-500 bg-black"
+                            key={`row1-${i}`}
+                            className="relative w-[350px] md:w-[400px] h-[220px] md:h-[250px] shrink-0 rounded-xl overflow-hidden group border-2 border-white/10 hover:border-lime-400/40 transition-colors duration-300 bg-black"
                         >
                             <Image
                                 src={src}
                                 fill
-                                className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
+                                className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
                                 alt="Gallery Memory"
+                                loading="lazy"
                             />
                             {/* Gradient Overlay */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                             {/* Lime Glow on Hover */}
-                            <div className="absolute inset-0 bg-lime-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 mix-blend-overlay" />
+                            <div className="absolute inset-0 bg-lime-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 mix-blend-overlay" />
                         </div>
                     ))}
                 </motion.div>
 
-                {/* Row 2 - Right to Left */}
-                <motion.div style={{ x: x2 }} className="flex gap-6 md:gap-8 w-[200%]">
+                {/* Row 2 - Right to Left - Scroll Linked */}
+                <motion.div
+                    style={{ x: x2, willChange: 'transform' }}
+                    className="flex gap-6 md:gap-8"
+                >
                     {[...images, ...images].reverse().map((src, i) => (
                         <div
-                            key={i}
-                            className="relative w-[350px] md:w-[400px] h-[220px] md:h-[250px] shrink-0 rounded-xl overflow-hidden group border-2 border-white/10 hover:border-purple-500/40 transition-all duration-500 bg-black"
+                            key={`row2-${i}`}
+                            className="relative w-[350px] md:w-[400px] h-[220px] md:h-[250px] shrink-0 rounded-xl overflow-hidden group border-2 border-white/10 hover:border-purple-500/40 transition-colors duration-300 bg-black"
                         >
                             <Image
                                 src={src}
                                 fill
-                                className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
+                                className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
                                 alt="Gallery Memory"
+                                loading="lazy"
                             />
                             {/* Gradient Overlay */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                             {/* Purple Glow on Hover */}
-                            <div className="absolute inset-0 bg-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 mix-blend-overlay" />
+                            <div className="absolute inset-0 bg-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 mix-blend-overlay" />
                         </div>
                     ))}
                 </motion.div>

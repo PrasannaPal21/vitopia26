@@ -28,10 +28,10 @@ export default function AboutSection() {
                 {/* Section Header */}
                 <motion.div
                     className="text-center mb-10 md:mb-12"
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 0.5 }}
                 >
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-anton text-white uppercase mb-3 leading-none">
                         THE <span className="text-transparent bg-clip-text bg-gradient-to-r from-lime-400 to-green-400">LEGACY</span>
@@ -47,10 +47,10 @@ export default function AboutSection() {
                     {/* Content Cards */}
                     <motion.div
                         className="space-y-5"
-                        initial={{ opacity: 0, x: -50 }}
+                        initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8 }}
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{ duration: 0.6 }}
                     >
                         {/* VITOPIA '24 Card */}
                         <div className="group">
@@ -84,7 +84,7 @@ export default function AboutSection() {
                                 <p className="text-gray-400 font-outfit text-sm md:text-base leading-relaxed mt-2">
                                     Ranked <span className="text-white font-semibold">#1 Emerging Private University</span>, we are a hub of{" "}
                                     <span className="text-white font-semibold">17,500+ students</span> from across the globe.
-                                    Our 100-acre campus is where technology meets culture.
+                                    Our 200-acre campus is where technology meets culture.
                                 </p>
                             </div>
                         </div>
@@ -96,7 +96,7 @@ export default function AboutSection() {
                                 <div className="text-xs md:text-sm text-gray-400 font-outfit uppercase tracking-wider">Students</div>
                             </div>
                             <div className="text-center p-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg">
-                                <div className="text-2xl md:text-3xl font-anton text-purple-400 mb-1">100</div>
+                                <div className="text-2xl md:text-3xl font-anton text-purple-400 mb-1">200</div>
                                 <div className="text-xs md:text-sm text-gray-400 font-outfit uppercase tracking-wider">Acres</div>
                             </div>
                             <div className="text-center p-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg">
@@ -109,10 +109,10 @@ export default function AboutSection() {
                     {/* Enhanced Image Grid */}
                     <motion.div
                         className="relative h-[400px] md:h-[480px] w-full"
-                        initial={{ opacity: 0, x: 50 }}
+                        initial={{ opacity: 0, x: 30 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8 }}
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{ duration: 0.6 }}
                     >
                         {/* Top Image - Jonita Gandhi */}
                         <div className="absolute top-0 right-0 w-[70%] h-[55%] border-2 border-lime-400/40 p-2 group hover:border-lime-400/80 transition-all duration-300">

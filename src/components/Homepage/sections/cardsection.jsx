@@ -72,10 +72,10 @@ export default function CardSection() {
         {/* Section Header */}
         <motion.div
           className="mb-16 text-center"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.4 }}
         >
           <h2 className="text-5xl md:text-7xl font-anton text-white uppercase mb-4">
             EXPLORE <span className="text-transparent bg-clip-text bg-gradient-to-r from-lime-400 to-green-400">CATEGORIES</span>
@@ -89,10 +89,10 @@ export default function CardSection() {
             <motion.div
               key={idx}
               className={item.size}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: idx * 0.1 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.4, delay: idx * 0.08 }}
             >
               <Link
                 href={item.href}
