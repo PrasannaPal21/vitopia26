@@ -15,6 +15,7 @@ const bentoItems = [
     hoverBorderColor: "group-hover:border-lime-400/80",
     glowColor: "group-hover:shadow-[0_0_40px_rgba(190,242,100,0.4)]",
     size: "col-span-12 md:col-span-8",
+    backgroundImage: "/sports.png",
   },
   {
     title: "CULTURALS",
@@ -26,6 +27,7 @@ const bentoItems = [
     hoverBorderColor: "group-hover:border-pink-500/80",
     glowColor: "group-hover:shadow-[0_0_40px_rgba(236,72,153,0.4)]",
     size: "col-span-12 md:col-span-4",
+    backgroundImage: "/culturals.png",
   },
   {
     title: "STATE RALLY",
@@ -37,9 +39,10 @@ const bentoItems = [
     hoverBorderColor: "group-hover:border-purple-500/80",
     glowColor: "group-hover:shadow-[0_0_40px_rgba(139,92,246,0.4)]",
     size: "col-span-12 md:col-span-4",
+    backgroundImage: "/state-rally.png",
   },
   {
-    title: "PRO-NITES",
+    title: "PRO-SHOW",
     description: "Star-studded nights you'll never forget.",
     href: "/pronites",
     icon: <IconStarFilled className="w-14 h-14" />,
@@ -48,6 +51,7 @@ const bentoItems = [
     hoverBorderColor: "group-hover:border-amber-400/80",
     glowColor: "group-hover:shadow-[0_0_40px_rgba(251,191,36,0.4)]",
     size: "col-span-12 md:col-span-8",
+    backgroundImage: "/night.png",
   },
 ];
 
@@ -98,11 +102,22 @@ export default function CardSection() {
                 href={item.href}
                 className={`group relative h-full overflow-hidden rounded-2xl border-2 ${item.borderColor} ${item.hoverBorderColor} bg-black/40 backdrop-blur-sm transition-all duration-500 hover:scale-[1.02] ${item.glowColor} block`}
               >
+                {/* Background Image if available */}
+                {item.backgroundImage && (
+                  <div className="absolute inset-0 z-0 overflow-hidden">
+                    <div
+                      className="absolute inset-0 bg-cover bg-center opacity-40 transition-transform duration-700 group-hover:scale-110 group-hover:opacity-50"
+                      style={{ backgroundImage: `url(${item.backgroundImage})` }}
+                    />
+                    <div className="absolute inset-0 bg-black/50 group-hover:bg-black/40 transition-colors duration-500" />
+                  </div>
+                )}
+
                 {/* Gradient Background */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-20 transition-opacity duration-500`} />
 
                 {/* Grid Pattern Overlay */}
-                <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.08] transition-opacity duration-500"
+                {!item.backgroundImage && <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.08] transition-opacity duration-500"
                   style={{
                     backgroundImage: `
                       linear-gradient(white 1px, transparent 1px),
@@ -110,7 +125,7 @@ export default function CardSection() {
                     `,
                     backgroundSize: '20px 20px'
                   }}
-                />
+                />}
 
                 {/* Content */}
                 <div className="relative h-full flex flex-col justify-between p-6 md:p-8">
