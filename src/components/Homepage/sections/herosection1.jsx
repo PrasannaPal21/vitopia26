@@ -4,9 +4,19 @@ import { motion } from "framer-motion";
 
 export default function HeroSection() {
     return (
-        <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-background py-20">
+        <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-black py-20">
+            {/* Background Image */}
+            <div className="absolute inset-0 z-0">
+                <img
+                    src="/hero-image.png"
+                    alt="Hero Background"
+                    className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black/70" />
+            </div>
+
             {/* Background Elements */}
-            <div className="absolute inset-0 bg-grid-pattern opacity-[0.04]" />
+            <div className="absolute inset-0 bg-grid-pattern opacity-[0.04] z-0" />
 
             {/* Gradient Blobs */}
             <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px]" />
