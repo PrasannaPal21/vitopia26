@@ -28,9 +28,9 @@ const bentoItems = [
     size: "col-span-12 md:col-span-4",
   },
   {
-    title: "TECHNICA",
-    description: "Hackathons, Robo-wars & Tech-talks.",
-    href: "/technica",
+    title: "STATE RALLY",
+    description: "One Nation, A Million Stories – The State-Wise Rally at VITOPIA 2025!.",
+    href: "/",
     icon: <IconCpu className="w-14 h-14" />,
     color: "from-purple-500 to-violet-600",
     borderColor: "border-purple-500/30",
