@@ -71,7 +71,7 @@ export function Footer() {
               </p>
 
               {/* Newsletter */}
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm">
+              {/* <div className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm"> */}
                 <h4 className="text-white font-anton text-xl uppercase mb-3">Stay Updated</h4>
                 <div className="relative flex">
                   <input
@@ -83,7 +83,7 @@ export function Footer() {
                     <IconArrowRight size={20} />
                   </button>
                 </div>
-              </div>
+              {/* </div> */}
             </div>
 
             {/* Links Grid */}
@@ -142,7 +142,10 @@ export function Footer() {
             <div className="flex flex-col md:flex-row items-center justify-between gap-6">
               {/* Copyright - Left */}
               <p className="text-white/30 text-sm font-outfit uppercase tracking-wider text-center md:text-left">
-                &copy; 2025 VITOPIA. Crafted with <span className="text-red-500 animate-pulse">❤</span> by <span className="text-white">Web Team</span>.
+                &copy; 2025 VITOPIA. Crafted with <span className="text-lime-400 animate-pulse">❤</span> by{' '}
+                <a href="https://linkedin.com/in/prasanna-pal-542992274" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[var(--primary)] transition-colors">Prasanna</a>,{' '}
+                <a href="https://linkedin.com/in/tanmay-rajurkar-254305227" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[var(--primary)] transition-colors">Tanmay</a> and{' '}
+                <a href="https://linkedin.com/in/tanvish-reddy" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[var(--primary)] transition-colors">Tanvish</a>.
               </p>
 
               {/* Socials - Center */}
