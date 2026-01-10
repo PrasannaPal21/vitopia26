@@ -96,17 +96,17 @@ export function Footer() {
                     { label: 'Sports', href: '/sports' },
                     { label: 'Culturals', href: '/culturals' },
                     { label: 'Merchandise', href: '/merchandise' },
-                    { label: 'Sponsors', href: '#' }
+                    { label: 'Sponsors', href: '/sponsers' }
                   ]
                 },
                 {
                   title: "Account",
                   color: "text-purple-400",
                   items: [
-                    { label: 'Login / Register', href: '#' },
-                    { label: 'Campus Ambassador', href: '#' },
-                    { label: 'Meet the Team', href: '#' },
-                    { label: 'FAQ', href: '#' }
+                    { label: 'Login / Register', href: '/login' },
+                    { label: 'Patrons', href: '/patrons' },
+                    { label: 'Meet the Team', href: '/team' },
+                    { label: 'FAQ', href: '/faq' }
                   ]
                 },
                 {
@@ -114,8 +114,7 @@ export function Footer() {
                   color: "text-pink-400",
                   items: [
                     { label: 'Contact Us', href: '/contact' },
-                    { label: 'Help Center', href: '#' },
-                    { label: 'Safety Guide', href: '#' },
+                    { label: 'Rule Book', href: '#' },
                     { label: 'Map', href: 'https://maps.app.goo.gl/PSy6LqAeRo16vSd68' }
                   ]
                 }
