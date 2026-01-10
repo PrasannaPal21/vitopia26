@@ -149,37 +149,14 @@ export default function Contact() {
                                         </div>
                                     </div>
 
-                                    {/* Styled Button matching GRAB PASSES */}
-                                    <div className="relative inline-block group w-full">
-                                        {/* Pulsing Glow Background */}
-                                        <div className="absolute -inset-3 bg-gradient-to-r from-lime-400/20 via-green-400/20 to-lime-400/20 opacity-20 blur-xl group-hover:opacity-30 animate-pulse transition-opacity duration-300" />
-
-                                        <button
-                                            type="button"
-                                            className="relative cursor-pointer block overflow-hidden w-full"
-                                            style={{
-                                                clipPath: 'polygon(6% 0%, 100% 0%, 94% 100%, 0% 100%)'
-                                            }}
-                                        >
-                                            {/* Main Button */}
-                                            <div className="relative px-8 py-4 bg-gradient-to-r from-lime-400/90 via-green-400/90 to-lime-500/90 text-black font-anton text-lg md:text-xl uppercase tracking-wider transition-all duration-300 group-hover:from-lime-400 group-hover:via-green-400 group-hover:to-lime-500">
-                                                <div className="flex items-center justify-center gap-3 relative z-10">
-                                                    <span className="group-hover:translate-x-1 transition-transform duration-300">Send Message</span>
-                                                    <IconSend size={20} className="group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-300" stroke={2} />
-                                                </div>
-
-                                                {/* Diagonal Shimmer */}
-                                                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/25 to-transparent skew-x-12" />
-
-                                                {/* Animated Scanline */}
-                                                <div className="absolute left-0 right-0 h-[1px] bg-white/40 top-1/2 -translate-y-1/2 group-hover:animate-ping" />
-                                            </div>
-                                        </button>
-
-                                        {/* Decorative Corner Elements */}
-                                        <div className="absolute -top-1.5 -left-1.5 w-5 h-5 border-t-2 border-l-2 border-lime-400/60 group-hover:w-6 group-hover:h-6 transition-all duration-300" />
-                                        <div className="absolute -bottom-1.5 -right-1.5 w-5 h-5 border-b-2 border-r-2 border-lime-400/60 group-hover:w-6 group-hover:h-6 transition-all duration-300" />
-                                    </div>
+                                    {/* Minimalist Submit Button */}
+                                    <button
+                                        type="button"
+                                        className="w-full bg-gradient-to-r from-lime-400 to-green-400 hover:from-lime-300 hover:to-green-300 text-black font-semibold py-4 px-8 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 group"
+                                    >
+                                        <span>Send Message</span>
+                                        <IconSend size={20} className="group-hover:translate-x-1 transition-transform duration-300" stroke={2} />
+                                    </button>
                                 </form>
                             </div>
                         </motion.div>
