@@ -1,6 +1,5 @@
 'use client'
-import { IconExternalLink, IconHeart } from '@tabler/icons-react';
-import { useState } from 'react';
+import { IconExternalLink } from '@tabler/icons-react';
 
 function EventCard({ beach }) {
     return (

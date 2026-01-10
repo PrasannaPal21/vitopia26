@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { signIn, signOut, useSession } from "next-auth/react";
 import { IconMenu2, IconX } from "@tabler/icons-react";
 import { MdArrowOutward } from "react-icons/md";
 
@@ -17,22 +16,15 @@ const navItems = [
 ];
 
 export default function Navbar() {
-  const { data: session, status } = useSession();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
-  const router = useRouter();
 
-  // Scroll effect
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const handleSignIn = async () => {
-    await signIn("google", { callbackUrl: "/auth/role-bridge" });
-  };
 
   return (
     <>
@@ -78,29 +70,22 @@ export default function Navbar() {
 
           {/* Actions */}
           <div className="hidden md:flex items-center gap-4">
-            {status === "authenticated" ? (
-              <button onClick={() => signOut()} className="text-sm font-bold text-gray-400 hover:text-white uppercase">
-                Sign Out
-              </button>
-            ) : (
-              <button onClick={handleSignIn} className="text-sm font-bold text-gray-400 hover:text-white uppercase transition-colors">
+              <button className="text-sm cursor-pointer font-bold text-gray-400 hover:text-white uppercase transition-colors">
                 Login
               </button>
-            )}
 
             <div className="relative inline-block group scale-[0.85] origin-right">
               {/* Pulsing Glow Background */}
               <div className="absolute -inset-3 bg-gradient-to-r from-lime-400 via-green-400 to-lime-400 opacity-20 blur-xl group-hover:opacity-40 animate-pulse transition-opacity duration-300" />
 
               <button
-                onClick={handleSignIn}
                 className="relative block overflow-hidden"
                 style={{
                   clipPath: 'polygon(12% 0%, 100% 0%, 88% 100%, 0% 100%)'
                 }}
               >
                 {/* Main Button */}
-                <div className="relative px-8 py-3 bg-gradient-to-r from-lime-400 via-green-400 to-lime-500 text-black font-anton text-lg uppercase tracking-[0.1em] transition-all duration-300 group-hover:from-lime-300 group-hover:via-green-300 group-hover:to-lime-400">
+                <div className="relative cursor-pointer px-8 py-3 bg-gradient-to-r from-lime-400 via-green-400 to-lime-500 text-black font-anton text-lg uppercase tracking-[0.1em] transition-all duration-300 group-hover:from-lime-300 group-hover:via-green-300 group-hover:to-lime-400">
                   <div className="flex items-center gap-3 relative z-10">
                     <span className="group-hover:translate-x-1 transition-transform duration-300">GRAB PASSES</span>
                     <MdArrowOutward className="text-xl group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />

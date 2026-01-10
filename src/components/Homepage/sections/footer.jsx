@@ -7,8 +7,6 @@ import {
   IconBrandFacebook,
   IconBrandTwitter,
   IconBrandLinkedin,
-  IconMail,
-  IconMapPin,
   IconArrowUp,
   IconArrowRight
 } from "@tabler/icons-react";
