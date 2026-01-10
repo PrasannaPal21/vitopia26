@@ -76,7 +76,7 @@ export default function Contact() {
                         </span>
                     </h1>
                     <p className="text-white/50 text-lg md:text-xl max-w-2xl mx-auto">
-                        Have questions about VITOPIA '25? Reach out to our coordinators or drop us a message directly.
+                        Have questions about VITOPIA '26? Reach out to our coordinators or drop us a message directly.
                     </p>
                 </motion.div>
 

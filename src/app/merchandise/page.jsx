@@ -329,7 +329,7 @@ function MerchandisePage() {
 
                         {/* Subtitle */}
                         <p className="text-white/50 text-lg md:text-xl max-w-2xl mx-auto mb-10">
-                            Grab the exclusive VITOPIA '25 collection. Limited edition apparel and accessories
+                            Grab the exclusive VITOPIA '26 collection. Limited edition apparel and accessories
                             designed to make you stand out.
                         </p>
                     </motion.div>
