@@ -89,10 +89,8 @@ export default function Contact() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6 }}
-                            className="bg-[#0a0a0a] border border-white/5 rounded-3xl p-8 md:p-10 relative overflow-hidden group"
+                            className="bg-[#0a0a0a] border border-white/5 rounded-3xl p-8 md:p-10 relative overflow-hidden"
                         >
-                            {/* Card glow effect */}
-                            <div className="absolute -inset-0.5 bg-gradient-to-br from-[var(--primary)] to-[var(--secondary)] rounded-3xl opacity-0 group-hover:opacity-20 blur-xl transition-all duration-500 pointer-events-none" />
 
                             <div className="relative z-10">
                                 <h2 className="text-3xl font-bold text-white mb-2">Send Message</h2>
@@ -151,10 +149,37 @@ export default function Contact() {
                                         </div>
                                     </div>
 
-                                    <button type="button" className="w-full bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)] text-[#0a0a0a] font-bold text-lg py-4 rounded-xl flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-[var(--primary)]/20 transition-all hover:scale-[1.02] active:scale-[0.98] uppercase tracking-wide">
-                                        <IconSend size={22} stroke={2} />
-                                        Send Message
-                                    </button>
+                                    {/* Styled Button matching GRAB PASSES */}
+                                    <div className="relative inline-block group w-full">
+                                        {/* Pulsing Glow Background */}
+                                        <div className="absolute -inset-3 bg-gradient-to-r from-lime-400/20 via-green-400/20 to-lime-400/20 opacity-20 blur-xl group-hover:opacity-30 animate-pulse transition-opacity duration-300" />
+
+                                        <button
+                                            type="button"
+                                            className="relative cursor-pointer block overflow-hidden w-full"
+                                            style={{
+                                                clipPath: 'polygon(6% 0%, 100% 0%, 94% 100%, 0% 100%)'
+                                            }}
+                                        >
+                                            {/* Main Button */}
+                                            <div className="relative px-8 py-4 bg-gradient-to-r from-lime-400/90 via-green-400/90 to-lime-500/90 text-black font-anton text-lg md:text-xl uppercase tracking-wider transition-all duration-300 group-hover:from-lime-400 group-hover:via-green-400 group-hover:to-lime-500">
+                                                <div className="flex items-center justify-center gap-3 relative z-10">
+                                                    <span className="group-hover:translate-x-1 transition-transform duration-300">Send Message</span>
+                                                    <IconSend size={20} className="group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-300" stroke={2} />
+                                                </div>
+
+                                                {/* Diagonal Shimmer */}
+                                                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/25 to-transparent skew-x-12" />
+
+                                                {/* Animated Scanline */}
+                                                <div className="absolute left-0 right-0 h-[1px] bg-white/40 top-1/2 -translate-y-1/2 group-hover:animate-ping" />
+                                            </div>
+                                        </button>
+
+                                        {/* Decorative Corner Elements */}
+                                        <div className="absolute -top-1.5 -left-1.5 w-5 h-5 border-t-2 border-l-2 border-lime-400/60 group-hover:w-6 group-hover:h-6 transition-all duration-300" />
+                                        <div className="absolute -bottom-1.5 -right-1.5 w-5 h-5 border-b-2 border-r-2 border-lime-400/60 group-hover:w-6 group-hover:h-6 transition-all duration-300" />
+                                    </div>
                                 </form>
                             </div>
                         </motion.div>
