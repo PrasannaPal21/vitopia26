@@ -142,7 +142,7 @@ export function Footer() {
             <div className="flex flex-col md:flex-row items-center justify-between gap-6">
               {/* Copyright - Left */}
               <p className="text-white/30 text-sm font-outfit uppercase tracking-wider text-center md:text-left">
-                &copy; 2025 VITOPIA. Crafted with <span className="text-lime-400 animate-pulse">❤</span> by{' '}
+                &copy; 2026 VITOPIA. Crafted with <span className="text-lime-400 animate-pulse">❤</span> by{' '}
                 <a href="https://linkedin.com/in/prasanna-pal-542992274" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[var(--primary)] transition-colors">Prasanna</a>,{' '}
                 <a href="https://linkedin.com/in/tanmay-rajurkar-254305227" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[var(--primary)] transition-colors">Tanmay</a> and{' '}
                 <a href="https://linkedin.com/in/tanvish-reddy" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[var(--primary)] transition-colors">Tanvish</a>.
