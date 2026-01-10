@@ -7,9 +7,10 @@ export default function Contact() {
         {
             type: "Event Coordinators",
             members: [
-                { name: "Dr. M. Krishna Swamy", position: "Convenor", email: "convenor.vitopia@vitap.ac.in" },
-                { name: "Dr. Karishma Bisht", position: "Co Convenor", email: "karishma.b@vitap.ac.in" },
-                { name: "Dr. U M Gopala Krishna", position: "Co Convenor", email: "gopalkrishna.um@vitap.ac.in", phone: "+91 81421 77143" },
+                { name: "Dr. S Gopikrishnan", position: "Convenor", email: "convenor.vitopia@vitap.ac.in" },
+                { name: "Dr. Karishma Bisht", position: "Co Convenor – Cultural Events", email: "karishma.b@vitap.ac.in" },
+                { name: "Dr. Guruprakash Jayabalasamy", position: "Co Convenor – Pro Show Events", email: "guruprakash@vitap.ac.in" },
+                { name: "Dr. U M Gopala Krishna", position: "Co Convenor – Sports", email: "gopalkrishna.um@vitap.ac.in", phone: "+91 81421 77143" },
             ],
         },
         {

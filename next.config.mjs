@@ -4,6 +4,7 @@ const nextConfig = {
     NEXT_API_TOKEN: process.env.NEXT_API_TOKEN,
     JWT_SECRET: process.env.JWT_SECRET,
   },
+  allowedDevOrigins: ["tunnel-3000.tanvish.co.in"],
   images: {
     remotePatterns: [
       {

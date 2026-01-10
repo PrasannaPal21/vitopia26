@@ -7,8 +7,8 @@ import { MdArrowOutward } from "react-icons/md";
 const TimerSection = () => {
   return (
     <section className="bg-[#050505] py-20 md:py-32 relative overflow-hidden border-y border-lime-400/20">
-      {/* Animated Grid Background */}
-      <div className="absolute inset-0 opacity-20">
+      {/* Static Grid Background */}
+      <div className="absolute inset-0 opacity-10">
         <div
           className="absolute inset-0"
           style={{
@@ -16,22 +16,13 @@ const TimerSection = () => {
               linear-gradient(rgba(190, 242, 100, 0.1) 1px, transparent 1px),
               linear-gradient(90deg, rgba(190, 242, 100, 0.1) 1px, transparent 1px)
             `,
-            backgroundSize: '50px 50px',
-            animation: 'gridMove 20s linear infinite'
+            backgroundSize: '50px 50px'
           }}
         />
       </div>
 
       {/* Radial Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-radial from-purple-900/20 via-transparent to-transparent" />
-
-      {/* Noise Texture */}
-      <div
-        className="absolute inset-0 opacity-30 mix-blend-overlay"
-        style={{
-          backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.65\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")'
-        }}
-      />
+      <div className="absolute inset-0 bg-gradient-radial from-purple-900/10 via-transparent to-transparent" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
@@ -106,17 +97,6 @@ const TimerSection = () => {
 
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes gridMove {
-          0% {
-            transform: translateY(0);
-          }
-          100% {
-            transform: translateY(50px);
-          }
-        }
-      `}</style>
     </section>
   );
 };

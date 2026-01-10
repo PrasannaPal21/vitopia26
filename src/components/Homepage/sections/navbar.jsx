@@ -38,7 +38,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="relative w-32 h-12 md:w-40 md:h-16 group">
             <Image
-              src="/logo.svg"
+              src="/vitopia-color.png"
               fill
               className="object-contain transition-transform group-hover:scale-105"
               alt="VITOPIA Logo"

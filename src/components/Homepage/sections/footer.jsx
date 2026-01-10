@@ -43,7 +43,7 @@ export function Footer() {
 
       <div className="pt-24 pb-10 relative">
         {/* Massive Background Text */}
-        <div className="absolute top-20 left-1/2 -translate-x-1/2 w-full overflow-hidden pointer-events-none select-none opacity-[0.02]">
+        <div className="absolute top-20 left-1/2 -translate-x-1/2 w-full overflow-hidden pointer-events-none select-none opacity-[0.04]">
           <h1 className="text-[25vw] font-anton text-white text-center leading-[0.8] tracking-tighter">
             VITOPIA
           </h1>
@@ -60,7 +60,7 @@ export function Footer() {
             <div className="lg:col-span-4 space-y-8">
               <Link href="/" className="relative block w-48 h-16 opacity-90 hover:opacity-100 transition-opacity">
                 <Image
-                  src="/logo.svg"
+                  src="/vitopia26.png"
                   fill
                   className="object-contain object-left"
                   alt="VITOPIA Logo"
@@ -92,27 +92,42 @@ export function Footer() {
                 {
                   title: "Explore",
                   color: "text-lime-400",
-                  items: ['Sports', 'Culturals', 'Merchandise', 'Sponsors']
+                  items: [
+                    { label: 'Sports', href: '/sports' },
+                    { label: 'Culturals', href: '/culturals' },
+                    { label: 'Merchandise', href: '/merchandise' },
+                    { label: 'Sponsors', href: '#' }
+                  ]
                 },
                 {
                   title: "Account",
                   color: "text-purple-400",
-                  items: ['Login / Register', 'Campus Ambassador', 'Meet the Team', 'FAQ']
+                  items: [
+                    { label: 'Login / Register', href: '#' },
+                    { label: 'Campus Ambassador', href: '#' },
+                    { label: 'Meet the Team', href: '#' },
+                    { label: 'FAQ', href: '#' }
+                  ]
                 },
                 {
                   title: "Support",
                   color: "text-pink-400",
-                  items: ['Contact Us', 'Help Center', 'Safety Guide', 'Map']
+                  items: [
+                    { label: 'Contact Us', href: '/contact' },
+                    { label: 'Help Center', href: '#' },
+                    { label: 'Safety Guide', href: '#' },
+                    { label: 'Map', href: 'https://maps.app.goo.gl/PSy6LqAeRo16vSd68' }
+                  ]
                 }
               ].map((section, idx) => (
                 <div key={idx} className="space-y-6">
                   <h3 className={`text-xl font-anton uppercase tracking-wider ${section.color}`}>{section.title}</h3>
                   <ul className="space-y-3">
                     {section.items.map((item) => (
-                      <li key={item}>
-                        <Link href="#" className="text-white/50 font-outfit hover:text-white transition-all flex items-center gap-2 group text-base">
+                      <li key={item.label}>
+                        <Link href={item.href} className="text-white/50 font-outfit hover:text-white transition-all flex items-center gap-2 group text-base">
                           <span className={`w-0 h-[2px] ${section.color.replace('text-', 'bg-')} transition-all duration-300 group-hover:w-4`} />
-                          {item}
+                          {item.label}
                         </Link>
                       </li>
                     ))}
@@ -122,32 +137,35 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="border-t border-white/10 pt-8 pb-4 flex flex-col items-center justify-between gap-8">
-            {/* Socials */}
-            <div className="flex gap-4">
-              {[
-                { icon: IconBrandInstagram, href: "", color: "hover:bg-gradient-to-tr hover:from-yellow-400 hover:via-red-500 hover:to-purple-500" },
-                { icon: IconBrandFacebook, href: "", color: "hover:bg-[#1877F2]" },
-                { icon: IconBrandTwitter, href: "", color: "hover:bg-sky-500" },
-                { icon: IconBrandLinkedin, href: "", color: "hover:bg-[#0A66C2]" }
-              ].map((social, idx) => (
-                <a
-                  key={idx}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white/60 transition-all duration-500 hover:text-white hover:-translate-y-2 hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] ${social.color}`}
-                >
-                  <social.icon size={22} />
-                </a>
-              ))}
-            </div>
-
-            <div className="flex flex-col md:flex-row items-center justify-between w-full gap-4">
+          {/* Compact Footer Bottom - Single Row */}
+          <div className="border-t border-white/10 pt-6 pb-4">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+              {/* Copyright - Left */}
               <p className="text-white/30 text-sm font-outfit uppercase tracking-wider text-center md:text-left">
-                &copy; 2025 VITOPIA. Crafted with <span className="text-red-500 animate-pulse">❤</span> by <span className="text-white mobile-hidden">Web Team</span>.
+                &copy; 2025 VITOPIA. Crafted with <span className="text-red-500 animate-pulse">❤</span> by <span className="text-white">Web Team</span>.
               </p>
 
+              {/* Socials - Center */}
+              <div className="flex gap-3">
+                {[
+                  { icon: IconBrandInstagram, href: "https://www.instagram.com/vitap.vitopia/", color: "hover:bg-gradient-to-tr hover:from-yellow-400 hover:via-red-500 hover:to-purple-500" },
+                  { icon: IconBrandFacebook, href: "https://www.facebook.com/vitap.university/", color: "hover:bg-[#1877F2]" },
+                  { icon: IconBrandTwitter, href: "https://twitter.com/VITAPuniversity", color: "hover:bg-sky-500" },
+                  { icon: IconBrandLinkedin, href: "https://www.linkedin.com/school/vitap-university/", color: "hover:bg-[#0A66C2]" }
+                ].map((social, idx) => (
+                  <a
+                    key={idx}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/60 transition-all duration-300 hover:text-white hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] ${social.color}`}
+                  >
+                    <social.icon size={20} />
+                  </a>
+                ))}
+              </div>
+
+              {/* Back to Top - Right */}
               <button
                 onClick={scrollToTop}
                 className="group flex items-center gap-2 px-4 py-2 border border-white/10 rounded-full text-white/50 hover:bg-white/10 hover:text-white transition-all"

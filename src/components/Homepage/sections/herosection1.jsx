@@ -14,17 +14,17 @@ export default function HeroSection() {
 
             <div className="container mx-auto px-6 relative z-10">
                 <motion.div
-                    initial={{ opacity: 0, y: 50 }}
+                    initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                     className="max-w-5xl mx-auto text-center"
                 >
                     {/* Badge */}
                     <motion.div
                         className="inline-flex items-center border border-lime-400/30 rounded-full px-5 py-2 bg-lime-400/5 backdrop-blur-md mb-8"
-                        initial={{ opacity: 0, scale: 0.9 }}
+                        initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
+                        transition={{ duration: 0.4, delay: 0.15 }}
                     >
                         <span className="text-lime-400 font-outfit font-semibold tracking-wider text-xs md:text-sm uppercase">
                             The Ultimate Fest of VIT-AP
@@ -34,9 +34,9 @@ export default function HeroSection() {
                     {/* Main Title */}
                     <motion.h1
                         className="text-[18vw] sm:text-[15vw] md:text-[12vw] leading-[0.85] font-anton text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-white/30 uppercase select-none tracking-tight mb-6"
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.3 }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
                     >
                         VITOPIA
                     </motion.h1>
@@ -44,9 +44,9 @@ export default function HeroSection() {
                     {/* Subtitle */}
                     <motion.div
                         className="flex items-center justify-center gap-3 md:gap-6 text-2xl md:text-5xl lg:text-6xl font-black italic tracking-tight mb-8"
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 15 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.4 }}
+                        transition={{ duration: 0.6, delay: 0.3 }}
                     >
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-lime-400 to-green-400">SPORT</span>
                         <span className="text-white/40 mx-1 md:mx-2 not-italic font-light text-xl md:text-4xl">×</span>
@@ -58,7 +58,7 @@ export default function HeroSection() {
                         className="max-w-2xl mx-auto text-gray-400 text-base md:text-lg lg:text-xl font-outfit leading-relaxed mb-10"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        transition={{ duration: 0.8, delay: 0.5 }}
+                        transition={{ duration: 0.6, delay: 0.4 }}
                     >
                         Experience the 3-day saga of adrenaline, art, and innovation.
                         <br className="hidden sm:block" />
@@ -68,9 +68,9 @@ export default function HeroSection() {
                     {/* CTA Buttons */}
                     <motion.div
                         className="flex flex-col sm:flex-row items-center justify-center gap-4"
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 15 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.6 }}
+                        transition={{ duration: 0.6, delay: 0.5 }}
                     >
                         <button className="w-full sm:w-auto px-10 py-4 bg-gradient-to-r from-lime-400 to-green-400 text-black font-anton text-base md:text-lg uppercase tracking-wider hover:from-lime-300 hover:to-green-300 transition-all duration-300 shadow-[0_0_30px_rgba(190,242,100,0.4)] hover:shadow-[0_0_50px_rgba(190,242,100,0.6)] hover:scale-105">
                             View Events
@@ -84,16 +84,40 @@ export default function HeroSection() {
 
             {/* Decorative Ticker */}
             <div className="absolute bottom-0 w-full border-t border-white/10 py-4 bg-black/50 backdrop-blur-sm overflow-hidden">
-                <motion.div
-                    className="whitespace-nowrap flex gap-12 text-gray-500 font-mono text-xs uppercase tracking-[0.2em]"
-                    animate={{ x: "-100%" }}
-                    transition={{ repeat: Infinity, duration: 25, ease: "linear" }}
-                >
-                    {Array(10).fill("•  Feb 22-24, 2026  •  Register Now  •  VITOPIA  ").map((item, i) => (
-                        <span key={i}>{item}</span>
-                    ))}
-                </motion.div>
+                <div className="ticker-wrapper">
+                    <div className="ticker-content whitespace-nowrap flex gap-12 text-gray-500 font-mono text-xs uppercase tracking-[0.2em]">
+                        {Array(8).fill("•  Feb 22-24, 2026  •  Register Now  •  VITOPIA  ").map((item, i) => (
+                            <span key={i}>{item}</span>
+                        ))}
+                    </div>
+                </div>
             </div>
+
+            <style jsx>{`
+                @keyframes ticker {
+                    0% {
+                        transform: translateX(0);
+                    }
+                    100% {
+                        transform: translateX(-50%);
+                    }
+                }
+
+                .ticker-wrapper {
+                    display: flex;
+                    will-change: transform;
+                }
+
+                .ticker-content {
+                    animation: ticker 30s linear infinite;
+                }
+
+                @media (prefers-reduced-motion: reduce) {
+                    .ticker-content {
+                        animation: none;
+                    }
+                }
+            `}</style>
         </section>
     );
 }

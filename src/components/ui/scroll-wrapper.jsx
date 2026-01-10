@@ -3,13 +3,13 @@ import React from "react";
 import { motion } from "framer-motion";
 
 export function ScrollWrapper({ children, className = "" }) {
-    // Optimized for performance - removed continuous scroll listeners
+    // Optimized for performance - removed continuous scroll listeners and scale transforms
     return (
         <motion.div
-            initial={{ opacity: 0, y: 50, scale: 0.95 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             className={`relative w-full ${className}`}
         >
             {children}
@@ -20,10 +20,10 @@ export function ScrollWrapper({ children, className = "" }) {
 export function RevealWrapper({ children, delay = 0 }) {
     return (
         <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6, delay, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.4, delay, ease: [0.22, 1, 0.36, 1] }}
         >
             {children}
         </motion.div>
