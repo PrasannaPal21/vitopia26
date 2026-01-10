@@ -10,8 +10,8 @@ export function Tshirts() {
     const [hoveringIndex, setHoveringIndex] = useState(null);
 
     const tShirts = [
-        { src: "/tshirts/img8.avif", title: "Night Tribe T Shirt", description: "VITopia 2025 T-Shirt", price: "₹ 300" },
-        { src: "/tshirts/img6.avif", title: "Butterfly T Shirt", description: "VITopia 2025 T-Shirt", price: "₹ 300" }
+        { src: "/tshirts/img8.avif", title: "Night Tribe T Shirt", description: "VITopia 2026 T-Shirt", price: "₹ 300" },
+        { src: "/tshirts/img6.avif", title: "Butterfly T Shirt", description: "VITopia 2026 T-Shirt", price: "₹ 300" }
     ];
 
     return (

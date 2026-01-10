@@ -11,7 +11,7 @@ const merchData = [
     {
         id: 1,
         title: "Night Tribe T Shirt",
-        description: "Be part of the tribe with this exclusive VITopia 2025 dark theme tee.",
+        description: "Be part of the tribe with this exclusive VITopia 2026 dark theme tee.",
         price: "₹300",
         image: "/tshirts/img8.avif",
         category: "T-Shirt",

@@ -1,8 +1,62 @@
 'use client';
 import { motion } from 'framer-motion';
-import { IconMail, IconPhone, IconUser, IconMapPin, IconMessage, IconSend, IconBuildingCommunity } from '@tabler/icons-react';
+import { IconMail, IconPhone, IconUser, IconMapPin, IconMessage, IconSend, IconBuildingCommunity, IconCheck, IconX } from '@tabler/icons-react';
+import { useState } from 'react';
 
 export default function Contact() {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        subject: 'General Inquiry',
+        message: ''
+    });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error' | null
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        setSubmitStatus(null);
+
+        try {
+            const webhookURL = 'https://ptb.discord.com/api/webhooks/1459484455231164416/0MT2TG2-ZeAVuCxuPJ6mawDsEMp4c6cggRaYv94gti0KxxdMfnfTJHgxqH9omxF3nTU3';
+
+            const embed = {
+                embeds: [{
+                    title: "📬 New Contact Form Submission",
+                    color: 0xbef264, // lime-400
+                    fields: [
+                        { name: "👤 Name", value: formData.name, inline: true },
+                        { name: "📧 Email", value: formData.email, inline: true },
+                        { name: "📋 Subject", value: formData.subject, inline: false },
+                        { name: "💬 Message", value: formData.message, inline: false }
+                    ],
+                    timestamp: new Date().toISOString(),
+                    footer: { text: "VITOPIA 2026 Contact Form" }
+                }]
+            };
+
+            const response = await fetch(webhookURL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(embed)
+            });
+
+            if (response.ok) {
+                setSubmitStatus('success');
+                setFormData({ name: '', email: '', subject: 'General Inquiry', message: '' });
+            } else {
+                setSubmitStatus('error');
+            }
+        } catch (error) {
+            console.error('Error sending message:', error);
+            setSubmitStatus('error');
+        } finally {
+            setIsSubmitting(false);
+            setTimeout(() => setSubmitStatus(null), 5000);
+        }
+    };
+
     const coordinatorGroups = [
         {
             type: "Event Coordinators",
@@ -96,7 +150,7 @@ export default function Contact() {
                                 <h2 className="text-3xl font-bold text-white mb-2">Send Message</h2>
                                 <p className="text-white/50 mb-8">We'll get back to you within 24 hours.</p>
 
-                                <form className="space-y-5">
+                                <form className="space-y-5" onSubmit={handleSubmit}>
                                     <div className="grid md:grid-cols-2 gap-5">
                                         <div className="space-y-2">
                                             <label className="text-xs font-semibold uppercase tracking-wider text-white/50 pl-1">Name</label>
@@ -104,7 +158,10 @@ export default function Contact() {
                                                 <IconUser className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30 group-focus-within/input:text-[var(--primary)] transition-colors" size={20} />
                                                 <input
                                                     type="text"
-                                                    placeholder="John Doe"
+                                                    placeholder="Vitian"
+                                                    required
+                                                    value={formData.name}
+                                                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                                     className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-12 pr-4 text-white placeholder:text-white/20 focus:outline-none focus:border-[var(--primary)]/50 focus:bg-white/10 transition-all font-medium"
                                                 />
                                             </div>
@@ -115,7 +172,10 @@ export default function Contact() {
                                                 <IconMail className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30 group-focus-within/input:text-[var(--primary)] transition-colors" size={20} />
                                                 <input
                                                     type="email"
-                                                    placeholder="john@example.com"
+                                                    placeholder="vitian@vitapstudent.ac.in"
+                                                    required
+                                                    value={formData.email}
+                                                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                                     className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-12 pr-4 text-white placeholder:text-white/20 focus:outline-none focus:border-[var(--primary)]/50 focus:bg-white/10 transition-all font-medium"
                                                 />
                                             </div>
@@ -125,7 +185,11 @@ export default function Contact() {
                                     <div className="space-y-2">
                                         <label className="text-xs font-semibold uppercase tracking-wider text-white/50 pl-1">Subject</label>
                                         <div className="relative">
-                                            <select className="w-full bg-white/5 border border-white/10 rounded-xl py-4 px-4 text-white/80 focus:outline-none focus:border-[var(--primary)]/50 focus:bg-white/10 transition-all font-medium appearance-none cursor-pointer">
+                                            <select
+                                                value={formData.subject}
+                                                onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                                                className="w-full bg-white/5 border border-white/10 rounded-xl py-4 px-4 text-white/80 focus:outline-none focus:border-[var(--primary)]/50 focus:bg-white/10 transition-all font-medium appearance-none cursor-pointer"
+                                            >
                                                 <option className="bg-[#0a0a0a]">General Inquiry</option>
                                                 <option className="bg-[#0a0a0a]">Registration Issue</option>
                                                 <option className="bg-[#0a0a0a]">Sponsorship</option>
@@ -144,6 +208,9 @@ export default function Contact() {
                                             <textarea
                                                 rows="5"
                                                 placeholder="How can we help you?"
+                                                required
+                                                value={formData.message}
+                                                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                                                 className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-12 pr-4 text-white placeholder:text-white/20 focus:outline-none focus:border-[var(--primary)]/50 focus:bg-white/10 transition-all font-medium resize-none leading-relaxed"
                                             />
                                         </div>
@@ -151,12 +218,35 @@ export default function Contact() {
 
                                     {/* Minimalist Submit Button */}
                                     <button
-                                        type="button"
-                                        className="w-full bg-gradient-to-r from-lime-400 to-green-400 hover:from-lime-300 hover:to-green-300 text-black font-semibold py-4 px-8 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 group"
+                                        type="submit"
+                                        disabled={isSubmitting}
+                                        className="w-full cursor-pointer bg-gradient-to-r from-lime-400 to-green-400 hover:from-lime-300 hover:to-green-300 disabled:opacity-50 disabled:cursor-not-allowed text-black font-semibold py-4 px-8 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 group"
                                     >
-                                        <span>Send Message</span>
+                                        <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
                                         <IconSend size={20} className="group-hover:translate-x-1 transition-transform duration-300" stroke={2} />
                                     </button>
+
+                                    {/* Success/Error Messages */}
+                                    {submitStatus === 'success' && (
+                                        <motion.div
+                                            initial={{ opacity: 0, y: -10 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            className="flex items-center gap-2 bg-green-500/10 border border-green-500/20 rounded-xl p-4 text-green-400"
+                                        >
+                                            <IconCheck size={20} />
+                                            <span className="font-medium">Message sent successfully! We'll get back to you soon.</span>
+                                        </motion.div>
+                                    )}
+                                    {submitStatus === 'error' && (
+                                        <motion.div
+                                            initial={{ opacity: 0, y: -10 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            className="flex items-center gap-2 bg-red-500/10 border border-red-500/20 rounded-xl p-4 text-red-400"
+                                        >
+                                            <IconX size={20} />
+                                            <span className="font-medium">Failed to send message. Please try again later.</span>
+                                        </motion.div>
+                                    )}
                                 </form>
                             </div>
                         </motion.div>

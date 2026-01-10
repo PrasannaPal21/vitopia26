@@ -376,7 +376,7 @@ function CulturalsPage() {
                             transition={{ duration: 3, repeat: Infinity }}
                         >
                             <IconSparkles className="text-[var(--secondary)]" size={18} />
-                            <span className="text-[var(--secondary)] text-sm font-medium">VITOPIA 2025 Culturals</span>
+                            <span className="text-[var(--secondary)] text-sm font-medium">VITOPIA 2026 Culturals</span>
                         </motion.div>
 
                         {/* Title */}
