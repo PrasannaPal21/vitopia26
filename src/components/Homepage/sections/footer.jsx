@@ -7,7 +7,6 @@ import {
   IconBrandFacebook,
   IconBrandTwitter,
   IconBrandLinkedin,
-  IconBrandYoutube,
   IconArrowUp,
   IconArrowRight
 } from "@tabler/icons-react";
@@ -19,12 +18,11 @@ export function Footer() {
   };
 
   return (
-    <footer className="relative bg-white overflow-hidden border-t border-gray-200">
-      <div className="absolute inset-0 bg-gradient-to-b from-white via-gray-50/50 to-gray-100/50 pointer-events-none" />
+    <footer className="relative bg-[#050505] overflow-hidden border-t border-white/10">
       {/* Scrolling Ticker */}
-      <div className="w-full bg-violet-600 py-3 overflow-hidden flex relative z-20">
+      <div className="w-full bg-lime-400 py-3 overflow-hidden flex relative z-20">
         <motion.div
-          className="flex gap-8 whitespace-nowrap text-white font-anton text-lg uppercase tracking-widest items-center"
+          className="flex gap-8 whitespace-nowrap text-black font-anton text-lg uppercase tracking-widest items-center"
           animate={{ x: "-50%" }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
         >
@@ -46,14 +44,14 @@ export function Footer() {
       <div className="pt-24 pb-10 relative">
         {/* Massive Background Text */}
         <div className="absolute top-20 left-1/2 -translate-x-1/2 w-full overflow-hidden pointer-events-none select-none opacity-[0.04]">
-          <h1 className="text-[25vw] font-anton text-gray-900 text-center leading-[0.8] tracking-tighter opacity-10">
+          <h1 className="text-[25vw] font-anton text-white text-center leading-[0.8] tracking-tighter">
             VITOPIA
           </h1>
         </div>
 
         {/* Gradient Orbs */}
-        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-violet-400/10 rounded-full blur-[100px] pointer-events-none" />
-        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-fuchsia-500/10 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-lime-400/5 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-purple-500/5 rounded-full blur-[100px] pointer-events-none" />
 
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 mb-20">
@@ -68,23 +66,23 @@ export function Footer() {
                   alt="VITOPIA Logo"
                 />
               </Link>
-              <p className="text-gray-500 font-outfit text-lg max-w-md leading-relaxed">
-                The ultimate fusion of <span className="text-gray-900 font-medium">Technology</span>, <span className="text-gray-900 font-medium">Sports</span>, and <span className="text-gray-900 font-medium">Culture</span>.
+              <p className="text-white/60 font-outfit text-lg max-w-md leading-relaxed">
+                The ultimate fusion of <span className="text-white">Technology</span>, <span className="text-white">Sports</span>, and <span className="text-white">Culture</span>.
               </p>
 
               {/* Newsletter */}
               {/* <div className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm"> */}
-              <h4 className="text-gray-900 font-anton text-xl uppercase mb-3">Stay Updated</h4>
-              <div className="relative flex shadow-sm">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="w-full bg-white border border-gray-200 text-gray-900 px-4 py-3 rounded-l-lg focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500 transition-colors font-outfit placeholder:text-gray-400"
-                />
-                <button className="bg-violet-600 hover:bg-violet-700 text-white px-4 rounded-r-lg transition-colors flex items-center justify-center">
-                  <IconArrowRight size={20} />
-                </button>
-              </div>
+                <h4 className="text-white font-anton text-xl uppercase mb-3">Stay Updated</h4>
+                <div className="relative flex">
+                  <input
+                    type="email"
+                    placeholder="Enter your email"
+                    className="w-full bg-black/40 border border-white/10 text-white px-4 py-3 rounded-l-lg focus:outline-none focus:border-lime-400 transition-colors font-outfit"
+                  />
+                  <button className="bg-lime-400 hover:bg-lime-500 text-black px-4 rounded-r-lg transition-colors flex items-center justify-center">
+                    <IconArrowRight size={20} />
+                  </button>
+                </div>
               {/* </div> */}
             </div>
 
@@ -93,7 +91,7 @@ export function Footer() {
               {[
                 {
                   title: "Explore",
-                  color: "text-violet-600",
+                  color: "text-lime-400",
                   items: [
                     { label: 'Sports', href: '/sports' },
                     { label: 'Culturals', href: '/culturals' },
@@ -103,7 +101,7 @@ export function Footer() {
                 },
                 {
                   title: "Account",
-                  color: "text-violet-600",
+                  color: "text-purple-400",
                   items: [
                     { label: 'Login / Register', href: '/login' },
                     { label: 'Patrons', href: '/patrons' },
@@ -113,7 +111,7 @@ export function Footer() {
                 },
                 {
                   title: "Support",
-                  color: "text-amber-500",
+                  color: "text-pink-400",
                   items: [
                     { label: 'Contact Us', href: '/contact' },
                     { label: 'Rule Book', href: '#' },
@@ -126,7 +124,7 @@ export function Footer() {
                   <ul className="space-y-3">
                     {section.items.map((item) => (
                       <li key={item.label}>
-                        <Link href={item.href} className="text-gray-500 font-outfit hover:text-gray-900 transition-all flex items-center gap-2 group text-base">
+                        <Link href={item.href} className="text-white/50 font-outfit hover:text-white transition-all flex items-center gap-2 group text-base">
                           <span className={`w-0 h-[2px] ${section.color.replace('text-', 'bg-')} transition-all duration-300 group-hover:w-4`} />
                           {item.label}
                         </Link>
@@ -139,14 +137,14 @@ export function Footer() {
           </div>
 
           {/* Compact Footer Bottom - Single Row */}
-          <div className="border-t border-gray-200 pt-6 pb-4">
+          <div className="border-t border-white/10 pt-6 pb-4">
             <div className="flex flex-col md:flex-row items-center justify-between gap-6">
               {/* Copyright - Left */}
-              <p className="text-gray-400 text-sm font-outfit uppercase tracking-wider text-center md:text-left">
-                &copy; 2026 VITOPIA. Crafted with <span className="text-rose-500 animate-pulse">❤</span> by{' '}
-                <a href="https://linkedin.com/in/prasanna-pal-542992274" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-violet-600 transition-colors font-semibold">Prasanna</a>,{' '}
-                <a href="https://linkedin.com/in/tanmay-rajurkar-254305227" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-violet-600 transition-colors font-semibold">Tanmay</a> and{' '}
-                <a href="https://linkedin.com/in/tanvish-reddy" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-violet-600 transition-colors font-semibold">Tanvish</a>.
+              <p className="text-white/30 text-sm font-outfit uppercase tracking-wider text-center md:text-left">
+                &copy; 2026 VITOPIA. Crafted with <span className="text-lime-400 animate-pulse">❤</span> by{' '}
+                <a href="https://linkedin.com/in/prasanna-pal-542992274" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[var(--primary)] transition-colors">Prasanna</a>,{' '}
+                <a href="https://linkedin.com/in/tanmay-rajurkar-254305227" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[var(--primary)] transition-colors">Tanmay</a> and{' '}
+                <a href="https://linkedin.com/in/tanvish-reddy" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[var(--primary)] transition-colors">Tanvish</a>.
               </p>
 
               {/* Socials - Center */}
@@ -162,7 +160,7 @@ export function Footer() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 transition-all duration-300 hover:text-white hover:-translate-y-1 hover:shadow-lg ${social.color}`}
+                    className={`w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/60 transition-all duration-300 hover:text-white hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] ${social.color}`}
                   >
                     <social.icon size={20} />
                   </a>
@@ -172,7 +170,7 @@ export function Footer() {
               {/* Back to Top - Right */}
               <button
                 onClick={scrollToTop}
-                className="group flex items-center gap-2 px-4 py-2 border border-gray-200 rounded-full text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition-all bg-white"
+                className="group flex items-center gap-2 px-4 py-2 border border-white/10 rounded-full text-white/50 hover:bg-white/10 hover:text-white transition-all"
               >
                 <span className="text-xs font-anton uppercase tracking-widest">Back to Top</span>
                 <IconArrowUp className="group-hover:-translate-y-1 transition-transform duration-300" size={16} />

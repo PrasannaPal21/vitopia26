@@ -19,7 +19,7 @@ function ScrollProgress() {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 right-0 h-1 bg-violet-600 origin-left z-[100]"
+      className="fixed top-0 left-0 right-0 h-1 bg-lime-400 origin-left z-[100]"
       style={{ scaleX }}
     />
   );
@@ -27,7 +27,7 @@ function ScrollProgress() {
 
 export default function Page() {
   return (
-    <main className="bg-white min-h-screen selection:bg-primary selection:text-white overflow-x-hidden">
+    <main className="bg-black min-h-screen selection:bg-primary selection:text-black overflow-x-hidden">
       <ScrollProgress />
       <Navbar />
 

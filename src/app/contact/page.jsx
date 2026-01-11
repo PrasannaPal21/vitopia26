@@ -4,9 +4,9 @@ import Navbar from "@/components/Homepage/sections/navbar";
 
 export default function Page() {
     return (
-        <div className="bg-white min-h-screen">
+        <div className="bg-black min-h-screen">
             <Navbar />
-            <Contact />
+            <Contact/>
             <Footer />
         </div>
     );

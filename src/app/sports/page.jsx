@@ -550,7 +550,7 @@ function SportCard({ sport, index, onClick }) {
             <div className="absolute -inset-0.5 bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)] rounded-2xl opacity-0 group-hover:opacity-30 blur-xl transition-all duration-500" />
 
             {/* Main card */}
-            <div className="relative h-full bg-white border border-gray-100 rounded-2xl overflow-hidden transition-all duration-300 group-hover:border-violet-500/30 flex flex-col shadow-sm group-hover:shadow-xl group-hover:shadow-violet-500/10">
+            <div className="relative h-full bg-[#0a0a0a] border border-white/5 rounded-2xl overflow-hidden transition-all duration-300 group-hover:border-[var(--primary)]/30 flex flex-col">
                 {/* Image */}
                 <div className="absolute inset-0 overflow-hidden">
                     <img
@@ -558,35 +558,35 @@ function SportCard({ sport, index, onClick }) {
                         alt={sport.title}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
-                    {/* Gradient overlay - lightened for white theme */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent opacity-80" />
+                    {/* Gradient overlay - strengthened for readability */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent opacity-90" />
                 </div>
 
                 {/* Registration status badge */}
                 <div className={`absolute top-4 right-4 z-20 px-3 py-1 rounded-full text-xs font-medium backdrop-blur-md border ${sport.registrationStatus === 'open'
-                    ? 'bg-violet-500/10 text-violet-600 border-violet-500/20'
-                    : 'bg-gray-100 text-gray-500 border-gray-200'
+                    ? 'bg-[var(--primary)]/20 text-[var(--primary)] border-[var(--primary)]/20'
+                    : 'bg-black/50 text-white/60 border-white/10'
                     }`}>
                     {sport.registrationStatus === 'open' ? 'Open' : 'Closed'}
                 </div>
 
                 {/* Content positioned at bottom with better spacing */}
                 <div className="absolute bottom-0 left-0 right-0 p-6 z-10 flex flex-col justify-end h-full">
-                    <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-violet-400 transition-colors duration-300 leading-tight">
+                    <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-[var(--primary)] transition-colors duration-300 leading-tight">
                         {sport.title}
                     </h3>
-                    <p className="text-gray-200 text-sm mb-4 line-clamp-2 leading-relaxed">
+                    <p className="text-white/70 text-sm mb-4 line-clamp-2 leading-relaxed">
                         {sport.description}
                     </p>
 
                     {/* Meta info */}
-                    <div className="flex items-center gap-4 text-xs font-medium text-gray-300 border-t border-white/10 pt-4 mt-auto">
+                    <div className="flex items-center gap-4 text-xs font-medium text-white/50 border-t border-white/10 pt-4 mt-auto">
                         <span className="flex items-center gap-1.5">
-                            <IconUsers size={16} className="text-violet-400" />
+                            <IconUsers size={16} className="text-[var(--primary)]" />
                             {sport.teamSize}
                         </span>
                         <span className="flex items-center gap-1.5">
-                            <IconCalendar size={16} className="text-violet-400" />
+                            <IconCalendar size={16} className="text-[var(--secondary)]" />
                             {sport.date.split(',')[0]}
                         </span>
                     </div>
@@ -598,7 +598,7 @@ function SportCard({ sport, index, onClick }) {
                     animate={{ x: [0, 5, 0] }}
                     transition={{ repeat: Infinity, duration: 1.5 }}
                 >
-                    <IconChevronRight className="text-violet-400" size={24} />
+                    <IconChevronRight className="text-[var(--primary)]" size={24} />
                 </motion.div>
             </div>
         </motion.div>
@@ -623,7 +623,7 @@ function SportModal({ sport, onClose }) {
                 animate={{ scale: 1, opacity: 1, y: 0 }}
                 exit={{ scale: 0.95, opacity: 0, y: 20 }}
                 onClick={(e) => e.stopPropagation()}
-                className="relative bg-white border border-gray-100 rounded-3xl overflow-hidden max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
+                className="relative bg-[#0a0a0a] border border-white/10 rounded-3xl overflow-hidden max-w-2xl w-full max-h-[90vh] overflow-y-auto"
             >
                 {/* Image header */}
                 <div className="relative h-64 sm:h-72 overflow-hidden group">
@@ -632,7 +632,7 @@ function SportModal({ sport, onClose }) {
                         alt={sport.title}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent" />
 
                     {/* Close button */}
                     <button
@@ -645,41 +645,41 @@ function SportModal({ sport, onClose }) {
 
                 {/* Content */}
                 <div className="p-8 -mt-20 relative z-10">
-                    <div className="bg-white/80 backdrop-blur-xl border border-gray-100 rounded-2xl p-6 mb-8 shadow-xl shadow-gray-200/50">
+                    <div className="bg-[#0a0a0a]/80 backdrop-blur-xl border border-white/5 rounded-2xl p-6 mb-8 shadow-2xl">
                         {/* Title */}
-                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">{sport.title}</h2>
-                        <p className="text-gray-600 text-lg">{sport.description}</p>
+                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">{sport.title}</h2>
+                        <p className="text-white/60 text-lg">{sport.description}</p>
                     </div>
 
                     {/* Details grid */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                        <div className="bg-gray-50 rounded-2xl p-5 border border-gray-100 hover:border-violet-500/30 transition-colors">
-                            <div className="flex items-center gap-2 text-gray-500 text-sm mb-2 uppercase tracking-wider font-semibold">
-                                <IconUsers size={18} className="text-violet-500" />
+                        <div className="bg-white/5 rounded-2xl p-5 border border-white/5 hover:border-[var(--primary)]/30 transition-colors">
+                            <div className="flex items-center gap-2 text-white/40 text-sm mb-2 uppercase tracking-wider font-semibold">
+                                <IconUsers size={18} />
                                 Team Size
                             </div>
-                            <div className="text-gray-900 text-lg font-medium">{sport.teamSize}</div>
+                            <div className="text-white text-lg font-medium">{sport.teamSize}</div>
                         </div>
-                        <div className="bg-gray-50 rounded-2xl p-5 border border-gray-100 hover:border-violet-500/30 transition-colors">
-                            <div className="flex items-center gap-2 text-gray-500 text-sm mb-2 uppercase tracking-wider font-semibold">
-                                <IconTrophy size={18} className="text-violet-500" />
+                        <div className="bg-white/5 rounded-2xl p-5 border border-white/5 hover:border-[var(--primary)]/30 transition-colors">
+                            <div className="flex items-center gap-2 text-white/40 text-sm mb-2 uppercase tracking-wider font-semibold">
+                                <IconTrophy size={18} />
                                 Entry Fee
                             </div>
-                            <div className="text-violet-600 text-lg font-bold">{sport.entryFee}</div>
+                            <div className="text-[var(--primary)] text-lg font-bold">{sport.entryFee}</div>
                         </div>
-                        <div className="bg-gray-50 rounded-2xl p-5 border border-gray-100 hover:border-violet-500/30 transition-colors">
-                            <div className="flex items-center gap-2 text-gray-500 text-sm mb-2 uppercase tracking-wider font-semibold">
-                                <IconCalendar size={18} className="text-violet-500" />
+                        <div className="bg-white/5 rounded-2xl p-5 border border-white/5 hover:border-[var(--primary)]/30 transition-colors">
+                            <div className="flex items-center gap-2 text-white/40 text-sm mb-2 uppercase tracking-wider font-semibold">
+                                <IconCalendar size={18} />
                                 Date
                             </div>
-                            <div className="text-gray-900 text-lg font-medium">{sport.date}</div>
+                            <div className="text-white text-lg font-medium">{sport.date}</div>
                         </div>
-                        <div className="bg-gray-50 rounded-2xl p-5 border border-gray-100 hover:border-amber-500/30 transition-colors">
-                            <div className="flex items-center gap-2 text-gray-500 text-sm mb-2 uppercase tracking-wider font-semibold">
-                                <IconMapPin size={18} className="text-amber-500" />
+                        <div className="bg-white/5 rounded-2xl p-5 border border-white/5 hover:border-[var(--primary)]/30 transition-colors">
+                            <div className="flex items-center gap-2 text-white/40 text-sm mb-2 uppercase tracking-wider font-semibold">
+                                <IconMapPin size={18} />
                                 Venue
                             </div>
-                            <div className="text-gray-900 text-lg font-medium">{sport.venue}</div>
+                            <div className="text-white text-lg font-medium">{sport.venue}</div>
                         </div>
                     </div>
 
@@ -689,7 +689,7 @@ function SportModal({ sport, onClose }) {
                             href="https://universitywebsitbucket.s3.ap-south-1.amazonaws.com/vitopia/Final+Rules+%26+Regulations.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex-1 flex items-center justify-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-900 py-4 px-6 rounded-xl transition-all font-medium border border-gray-200"
+                            className="flex-1 flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 text-white py-4 px-6 rounded-xl transition-all font-medium border border-white/5"
                         >
                             <IconExternalLink size={20} />
                             Rules & Regulations
@@ -699,13 +699,13 @@ function SportModal({ sport, onClose }) {
                                 href={sport.registrationLink || '#'}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex-1 flex items-center justify-center gap-2 bg-violet-600 hover:bg-violet-700 text-white font-bold py-4 px-6 rounded-xl transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-violet-500/20"
+                                className="flex-1 flex items-center justify-center gap-2 bg-[var(--primary)] hover:bg-[var(--primary)]/90 text-black font-bold py-4 px-6 rounded-xl transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-[var(--primary)]/20"
                             >
                                 Register Now
                             </a>
                         ) : (
                             <button
-                                className="flex-1 bg-gray-100 text-gray-400 py-4 px-6 rounded-xl cursor-not-allowed font-medium"
+                                className="flex-1 bg-white/10 text-white/40 py-4 px-6 rounded-xl cursor-not-allowed font-medium"
                                 disabled
                             >
                                 Registrations Closed
@@ -722,22 +722,35 @@ function SportModal({ sport, onClose }) {
 // Main page component
 function SportsPage() {
     const [selectedSport, setSelectedSport] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        const timer = setTimeout(() => setIsLoading(false), 500);
+        return () => clearTimeout(timer);
+    }, []);
+
+    if (isLoading) {
+        return (
+            <div className="bg-[#050505] min-h-screen flex items-center justify-center">
+                <motion.div
+                    animate={{
+                        scale: [1, 1.2, 1],
+                        opacity: [0.5, 1, 0.5]
+                    }}
+                    transition={{
+                        duration: 1.5,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                    }}
+                    className="w-16 h-16 rounded-full border-2 border-[var(--primary)] border-t-transparent"
+                    style={{ animation: 'spin 1s linear infinite' }}
+                />
+            </div>
+        );
+    }
 
     return (
-        <div className="bg-gray-50 min-h-screen relative overflow-hidden">
-            {/* Global grid line pattern - covers entire page */}
-            <div
-                className="fixed inset-0 pointer-events-none"
-                style={{
-                    backgroundImage: `
-                        linear-gradient(to right, #8b5cf6 1px, transparent 1px),
-                        linear-gradient(to bottom, #8b5cf6 1px, transparent 1px)
-                    `,
-                    backgroundSize: '60px 60px',
-                    opacity: 0.12
-                }}
-            />
-
+        <div className="bg-[#050505] min-h-screen">
             <Navbar />
 
             {/* Hero Section */}
@@ -746,41 +759,29 @@ function SportsPage() {
                 <div className="absolute inset-0">
                     {/* Grid pattern */}
                     <div
-                        className="absolute inset-0 opacity-[0.04]"
+                        className="absolute inset-0 opacity-[0.03]"
                         style={{
-                            backgroundImage: `linear-gradient(rgba(124, 58, 237, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(124, 58, 237, 0.1) 1px, transparent 1px)`,
+                            backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
                             backgroundSize: '60px 60px'
                         }}
                     />
 
-                    {/* Gradient orbs - enhanced */}
+                    {/* Gradient orbs */}
                     <motion.div
-                        className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-violet-500/20 to-fuchsia-500/10 blur-[120px]"
-                        animate={{
-                            scale: [1, 1.3, 1],
-                            opacity: [0.4, 0.6, 0.4],
-                            x: [0, 50, 0],
-                            y: [0, -30, 0]
-                        }}
-                        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-                    />
-                    <motion.div
-                        className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full bg-gradient-to-tl from-rose-500/15 to-violet-500/10 blur-[100px]"
-                        animate={{
-                            scale: [1.2, 1, 1.2],
-                            opacity: [0.3, 0.5, 0.3],
-                            x: [0, -40, 0],
-                            y: [0, 40, 0]
-                        }}
-                        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-                    />
-                    <motion.div
-                        className="absolute top-1/2 right-1/3 w-[400px] h-[400px] rounded-full bg-fuchsia-500/10 blur-[80px]"
+                        className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-[var(--primary)]/10 blur-[120px]"
                         animate={{
                             scale: [1, 1.2, 1],
-                            opacity: [0.2, 0.4, 0.2]
+                            opacity: [0.3, 0.5, 0.3]
                         }}
-                        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+                        transition={{ duration: 8, repeat: Infinity }}
+                    />
+                    <motion.div
+                        className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-[var(--secondary)]/10 blur-[100px]"
+                        animate={{
+                            scale: [1.2, 1, 1.2],
+                            opacity: [0.3, 0.5, 0.3]
+                        }}
+                        transition={{ duration: 10, repeat: Infinity }}
                     />
                 </div>
 
@@ -793,35 +794,35 @@ function SportsPage() {
                     >
                         {/* Badge */}
                         <motion.div
-                            className="inline-flex md:mt-5 items-center gap-2 bg-violet-500/10 border border-violet-500/20 rounded-full px-4 py-2 mb-8"
+                            className="inline-flex md:mt-5 items-center gap-2 bg-[var(--primary)]/10 border border-[var(--primary)]/20 rounded-full px-4 py-2 mb-8"
                             animate={{ y: [0, -5, 0] }}
                             transition={{ duration: 3, repeat: Infinity }}
                         >
-                            <IconTrophy className="text-violet-500" size={18} />
-                            <span className="text-violet-600 text-sm font-medium">VITOPIA 2026 Sports</span>
+                            <IconTrophy className="text-[var(--primary)]" size={18} />
+                            <span className="text-[var(--primary)] text-sm font-medium">VITOPIA 2025 Sports</span>
                         </motion.div>
 
                         {/* Title */}
-                        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-gray-900 mb-6 tracking-tight">
-                            <span className="block">READY.</span>
-                            <span className="block bg-gradient-to-r from-violet-600 via-fuchsia-500 to-rose-500 bg-clip-text text-transparent">
-                                SET.
+                        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 tracking-tight">
+                            <span className="block">COMPETE.</span>
+                            <span className="block bg-gradient-to-r from-[var(--primary)] via-[var(--secondary)] to-[var(--accent)] bg-clip-text text-transparent">
+                                CONQUER.
                             </span>
-                            <span className="block">GO.</span>
+                            <span className="block">CELEBRATE.</span>
                         </h1>
 
                         {/* Subtitle */}
-                        <p className="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto mb-10">
-                            Unleash the athlete within you. Join us for the biggest sports extravaganza
-                            of the year featuring 35+ events.
+                        <p className="text-white/50 text-lg md:text-xl max-w-2xl mx-auto mb-10">
+                            Join the ultimate sporting extravaganza featuring 8+ sports disciplines,
+                            thousands of athletes, and unforgettable moments.
                         </p>
 
                         {/* Stats */}
                         <div className="flex flex-wrap justify-center gap-8 md:gap-16">
                             {[
-                                { value: 35, suffix: "+", label: "Events" },
-                                { value: 2000, suffix: "+", label: "Participants" },
-                                { value: 4, suffix: "", label: "Days" }
+                                { value: 8, suffix: "+", label: "Sports" },
+                                { value: 500, suffix: "+", label: "Participants" },
+                                { value: 3, suffix: "", label: "Days" }
                             ].map((stat, i) => (
                                 <motion.div
                                     key={i}
@@ -830,10 +831,10 @@ function SportsPage() {
                                     transition={{ delay: 0.5 + i * 0.1 }}
                                     className="text-center"
                                 >
-                                    <div className="text-4xl md:text-5xl font-bold text-gray-900 mb-1">
+                                    <div className="text-4xl md:text-5xl font-bold text-white mb-1">
                                         <AnimatedCounter value={stat.value} suffix={stat.suffix} />
                                     </div>
-                                    <div className="text-gray-500 text-sm uppercase tracking-wider">
+                                    <div className="text-white/40 text-sm uppercase tracking-wider">
                                         {stat.label}
                                     </div>
                                 </motion.div>
@@ -848,14 +849,8 @@ function SportsPage() {
 
 
             {/* Sports Grid Section */}
-            <section className="py-20 px-4 relative">
-                {/* Purple gradient orbs like hero section */}
-                <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                    <div className="absolute top-0 left-1/4 w-[500px] h-[500px] rounded-full bg-violet-500/10 blur-[100px]" />
-                    <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] rounded-full bg-fuchsia-500/10 blur-[80px]" />
-                </div>
-
-                <div className="max-w-6xl mx-auto relative z-10">
+            <section className="py-20 px-4">
+                <div className="max-w-6xl mx-auto">
                     {/* Section header */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -863,11 +858,11 @@ function SportsPage() {
                         viewport={{ once: true }}
                         className="text-center mb-16"
                     >
-                        <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">
+                        <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
                             Featured Sports
                         </h2>
-                        <p className="text-gray-600 max-w-xl mx-auto">
-                            Explore our comprehensive lineup of sporting events
+                        <p className="text-white/50 max-w-xl mx-auto">
+                            Explore our lineup of thrilling sports competitions
                         </p>
                     </motion.div>
 
@@ -892,19 +887,38 @@ function SportsPage() {
                         initial={{ opacity: 0, scale: 0.95 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
-                        className="relative overflow-hidden rounded-3xl bg-white border border-gray-200 p-12 text-center shadow-2xl shadow-gray-200/50"
+                        className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[var(--primary)]/20 via-[#0a0a0a] to-[var(--secondary)]/10 border border-white/5 p-12 text-center"
                     >
                         {/* Background decoration */}
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-violet-500/10 rounded-full blur-[80px]" />
-                        <div className="absolute bottom-0 left-0 w-48 h-48 bg-fuchsia-500/10 rounded-full blur-[60px]" />
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-[var(--primary)]/10 rounded-full blur-[80px]" />
+                        <div className="absolute bottom-0 left-0 w-48 h-48 bg-[var(--secondary)]/10 rounded-full blur-[60px]" />
 
                         <div className="relative z-10">
-                            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                                Ready to Compete?
+                            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                                Ready for the Challenge?
                             </h2>
-                            <p className="text-gray-600 mb-8 max-w-xl mx-auto">
-                                Check out the rule book and prepare for the ultimate showdown.
+                            <p className="text-white/50 mb-8 max-w-xl mx-auto">
+                                Registrations are now <strong>OPEN</strong> for all sports. Secure your spot and represent your college!
                             </p>
+                            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                                <a
+                                    href="https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-2 bg-[var(--primary)] text-black font-semibold px-8 py-4 rounded-full hover:bg-[var(--primary)]/90 transition-all hover:scale-105 active:scale-95"
+                                >
+                                    Register Now
+                                </a>
+                                <a
+                                    href="https://universitywebsitbucket.s3.ap-south-1.amazonaws.com/vitopia/Final+Rules+%26+Regulations.pdf"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-2 bg-white/5 text-white font-semibold px-8 py-4 rounded-full hover:bg-white/10 transition-all"
+                                >
+                                    <IconExternalLink size={20} />
+                                    Rules & Regulations
+                                </a>
+                            </div>
                         </div>
                     </motion.div>
                 </div>
@@ -919,7 +933,6 @@ function SportsPage() {
                 )}
             </AnimatePresence>
         </div>
-
     );
 }
 

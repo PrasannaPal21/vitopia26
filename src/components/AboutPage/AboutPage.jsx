@@ -22,7 +22,7 @@ export default function About() {
     ];
 
     return (
-        <div className="bg-white text-gray-900 relative py-32">
+        <div className="bg-black text-white relative py-32">
             <Head>
                 <title>About VITopia and VIT-AP</title>
             </Head>

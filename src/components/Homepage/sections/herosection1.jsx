@@ -4,25 +4,25 @@ import { motion } from "framer-motion";
 
 export default function HeroSection() {
     return (
-        <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-gradient-to-b from-white via-violet-50/30 to-white py-20">
+        <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-black py-20">
             {/* Background Image */}
             <div className="absolute inset-0 z-0">
                 <img
-                    src="/hero-image-colored.png"
-                    alt="Vitopia Hero Image"
-                    className="w-full h-full object-cover relative backdrop-blur-sm z-10"
+                    src="/hero-image.png"
+                    alt="Hero Background"
+                    className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-white/40" />
+                <div className="absolute inset-0 bg-black/70" />
             </div>
 
             {/* Background Elements */}
             <div className="absolute inset-0 bg-grid-pattern opacity-[0.04] z-0" />
 
             {/* Gradient Blobs */}
-            <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-violet-500/20 rounded-full blur-[120px]" />
-            <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-violet-500/20 rounded-full blur-[120px]" />
+            <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px]" />
+            <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-secondary/20 rounded-full blur-[120px]" />
 
-            <div className="container w-auto py-4 rounded-xl backdrop-blur-sm mx-auto px-6 relative z-10">
+            <div className="container mx-auto px-6 relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -31,19 +31,19 @@ export default function HeroSection() {
                 >
                     {/* Badge */}
                     <motion.div
-                        className="inline-flex items-center border border-violet-500/20 rounded-full px-5 py-2 bg-white/50 backdrop-blur-md mb-8 shadow-sm hover:shadow-violet-500/10 transition-all duration-300 hover:border-violet-500/40"
+                        className="inline-flex items-center border border-lime-400/30 rounded-full px-5 py-2 bg-lime-400/5 backdrop-blur-md mb-8"
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.4, delay: 0.15 }}
                     >
-                        <span className="text-violet-600 font-outfit font-semibold tracking-wider text-xs md:text-sm uppercase">
+                        <span className="text-lime-400 font-outfit font-semibold tracking-wider text-xs md:text-sm uppercase">
                             The Ultimate Fest of VIT-AP
                         </span>
                     </motion.div>
 
                     {/* Main Title */}
                     <motion.h1
-                        className="text-[18vw] sm:text-[15vw] md:text-[12vw] leading-[0.85] font-anton text-transparent bg-clip-text bg-gradient-to-b from-gray-900 via-gray-800 to-gray-600 uppercase select-none tracking-tight mb-6"
+                        className="text-[18vw] sm:text-[15vw] md:text-[12vw] leading-[0.85] font-anton text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-white/30 uppercase select-none tracking-tight mb-6"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
@@ -58,14 +58,14 @@ export default function HeroSection() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.3 }}
                     >
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-fuchsia-500">SPORT</span>
-                        <span className="text-gray-400 mx-1 md:mx-2 not-italic font-light text-xl md:text-4xl">×</span>
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-purple-500">CULTURE</span>
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-lime-400 to-green-400">SPORT</span>
+                        <span className="text-white/40 mx-1 md:mx-2 not-italic font-light text-xl md:text-4xl">×</span>
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">CULTURE</span>
                     </motion.div>
 
                     {/* Description */}
                     <motion.p
-                        className="max-w-2xl hidden md-visible mx-auto text-gray-600 text-base md:text-lg lg:text-xl font-outfit leading-relaxed mb-10"
+                        className="max-w-2xl hidden md-visible mx-auto text-gray-400 text-base md:text-lg lg:text-xl font-outfit leading-relaxed mb-10"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.6, delay: 0.4 }}
@@ -82,10 +82,10 @@ export default function HeroSection() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.5 }}
                     >
-                        <button className="w-[80%] sm:w-auto px-10 py-4 bg-gradient-to-r from-violet-600 via-fuchsia-500 to-rose-500 text-white font-anton text-base md:text-lg uppercase tracking-wider hover:from-violet-500 hover:via-fuchsia-400 hover:to-rose-400 transition-all duration-300 shadow-[0_10px_40px_-10px_rgba(124,58,237,0.5)] hover:shadow-[0_20px_40px_-10px_rgba(124,58,237,0.6)] hover:scale-105 rounded-xl">
+                        <button className="w-[80%] sm:w-auto px-10 py-4 bg-gradient-to-r from-lime-400 to-green-400 text-black font-anton text-base md:text-lg uppercase tracking-wider hover:from-lime-300 hover:to-green-300 transition-all duration-300 shadow-[0_0_30px_rgba(190,242,100,0.4)] hover:shadow-[0_0_50px_rgba(190,242,100,0.6)] hover:scale-105">
                             View Events
                         </button>
-                        <button className="w-[80%] sm:w-auto px-10 py-4 border-2 border-gray-300 text-gray-900 font-anton text-base md:text-lg uppercase tracking-wider hover:bg-gray-100 hover:border-gray-400 transition-all duration-300 backdrop-blur-sm">
+                        <button className="w-[80%] sm:w-auto px-10 py-4 border-2 border-white/20 text-white font-anton text-base md:text-lg uppercase tracking-wider hover:bg-white/10 hover:border-white/40 transition-all duration-300 backdrop-blur-sm">
                             Highlights
                         </button>
                     </motion.div>
@@ -93,7 +93,7 @@ export default function HeroSection() {
             </div>
 
             {/* Decorative Ticker */}
-            <div className="absolute bottom-0 w-full border-t border-gray-200 py-4 bg-white/80 backdrop-blur-sm overflow-hidden">
+            <div className="absolute bottom-0 w-full border-t border-white/10 py-4 bg-black/50 backdrop-blur-sm overflow-hidden">
                 <div className="ticker-wrapper">
                     <div className="ticker-content whitespace-nowrap flex gap-12 text-gray-500 font-mono text-xs uppercase tracking-[0.2em]">
                         {Array(8).fill("•  Feb 22-24, 2026  •  Register Now  •  VITOPIA  ").map((item, i) => (
