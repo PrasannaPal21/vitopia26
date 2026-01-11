@@ -6,15 +6,15 @@ import { MdArrowOutward } from "react-icons/md";
 
 const TimerSection = () => {
   return (
-    <section className="bg-[#050505] py-20 md:py-32 relative overflow-hidden border-y border-lime-400/20">
+    <section className="bg-gradient-to-br from-white via-violet-50/50 to-white py-20 md:py-32 relative overflow-hidden border-y border-violet-500/20">
       {/* Static Grid Background */}
       <div className="absolute inset-0 opacity-10">
         <div
           className="absolute inset-0"
           style={{
             backgroundImage: `
-              linear-gradient(rgba(190, 242, 100, 0.1) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(190, 242, 100, 0.1) 1px, transparent 1px)
+              linear-gradient(rgba(124, 58, 237, 0.03) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(124, 58, 237, 0.03) 1px, transparent 1px)
             `,
             backgroundSize: '50px 50px'
           }}
@@ -22,7 +22,7 @@ const TimerSection = () => {
       </div>
 
       {/* Radial Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-radial from-purple-900/10 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-radial from-violet-500/5 via-transparent to-transparent opacity-60" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
@@ -30,30 +30,30 @@ const TimerSection = () => {
           {/* CTA Side */}
           <div className="text-center lg:text-left space-y-8 flex-1">
             <div className="space-y-4">
-              <h2 className="text-5xl md:text-7xl lg:text-8xl font-anton text-white leading-none uppercase">
+              <h2 className="text-5xl md:text-7xl lg:text-8xl font-anton text-gray-900 leading-none uppercase">
                 THE COUNTDOWN
               </h2>
               <h2 className="text-5xl md:text-7xl lg:text-8xl font-anton leading-none uppercase relative inline-block">
                 <span
-                  className="text-transparent bg-gradient-to-r from-lime-400 via-green-400 to-lime-400 bg-clip-text animate-pulse"
+                  className="text-transparent bg-gradient-to-r from-violet-600 via-fuchsia-500 to-rose-500 bg-clip-text animate-pulse"
                   style={{
-                    WebkitTextStroke: '2px rgba(190, 242, 100, 0.3)'
+                    WebkitTextStroke: '2px rgba(124, 58, 237, 0.3)'
                   }}
                 >
                   HAS BEGUN
                 </span>
-                <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-lime-400 to-transparent opacity-50" />
+                <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-violet-500 to-transparent opacity-50" />
               </h2>
             </div>
 
-            <p className="text-white/60 font-outfit text-lg md:text-xl max-w-md mx-auto lg:mx-0 leading-relaxed">
+            <p className="text-gray-600 font-outfit text-lg md:text-xl max-w-md mx-auto lg:mx-0 leading-relaxed font-light">
               The ultimate fest experience is just around the corner. Secure your spot now!
             </p>
 
             {/* Creative Geometric Button */}
             <div className="relative inline-block group">
               {/* Pulsing Glow Background */}
-              <div className="absolute -inset-4 bg-gradient-to-r from-lime-400 via-green-400 to-lime-400 opacity-30 blur-2xl group-hover:opacity-50 animate-pulse transition-opacity duration-300" />
+              <div className="absolute -inset-4 bg-gradient-to-r from-violet-600 via-fuchsia-500 to-rose-500 opacity-30 blur-2xl group-hover:opacity-50 animate-pulse transition-opacity duration-300" />
 
               <Link
                 href="https://events.vitap.ac.in/e/vitopia-2025-cultural-dd247f1d-90e2-4daa-8615-441050caf953"
@@ -64,7 +64,7 @@ const TimerSection = () => {
                 }}
               >
                 {/* Main Button */}
-                <div className="relative px-12 py-6 bg-gradient-to-r from-lime-400 via-green-400 to-lime-500 text-black font-anton text-xl md:text-2xl uppercase tracking-[0.2em] transition-all duration-300 group-hover:from-lime-300 group-hover:via-green-300 group-hover:to-lime-400">
+                <div className="relative px-12 py-6 bg-gradient-to-r from-violet-600 via-fuchsia-500 to-rose-500 text-white font-anton text-xl md:text-2xl uppercase tracking-[0.2em] transition-all duration-300 group-hover:from-violet-500 group-hover:via-fuchsia-400 group-hover:to-rose-400">
                   <div className="flex items-center gap-4 relative z-10">
                     <span className="group-hover:translate-x-1 transition-transform duration-300">GRAB PASSES</span>
                     <MdArrowOutward className="text-2xl group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-300" />
@@ -79,8 +79,8 @@ const TimerSection = () => {
               </Link>
 
               {/* Decorative Corner Elements */}
-              <div className="absolute -top-2 -left-2 w-6 h-6 border-t-2 border-l-2 border-lime-400 group-hover:w-8 group-hover:h-8 transition-all duration-300" />
-              <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b-2 border-r-2 border-lime-400 group-hover:w-8 group-hover:h-8 transition-all duration-300" />
+              <div className="absolute -top-2 -left-2 w-6 h-6 border-t-2 border-l-2 border-violet-500 group-hover:w-8 group-hover:h-8 transition-all duration-300" />
+              <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b-2 border-r-2 border-violet-500 group-hover:w-8 group-hover:h-8 transition-all duration-300" />
 
               {/* Small Accent Dots */}
               {/* <div className="absolute -top-1 -right-1 w-2 h-2 bg-lime-400 rounded-full group-hover:scale-150 transition-transform duration-300" />
@@ -91,6 +91,7 @@ const TimerSection = () => {
           {/* Timer Component Wrapper */}
           <div className="w-full lg:w-auto flex-1 max-w-4xl">
             <div className="relative p-8 md:p-12 lg:p-16">
+              <div className="absolute inset-0 bg-gradient-to-r from-violet-500/10 to-transparent blur-3xl opacity-30 rounded-full" />
               <CountdownTimer />
             </div>
           </div>

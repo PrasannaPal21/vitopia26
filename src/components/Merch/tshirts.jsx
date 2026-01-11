@@ -15,15 +15,15 @@ export function Tshirts() {
     ];
 
     return (
-        <div className="bg-black pb-10">
-            <h1 className="text-4xl font-semibold text-white text-center py-8">
+        <div className="bg-white pb-10">
+            <h1 className="text-4xl font-semibold text-gray-900 text-center py-8 font-anton tracking-wide">
                 T-Shirts
             </h1>
             <div className="grid md:grid-cols-3 gap-10 justify-center">
                 {tShirts.map((tshirt, index) => (
                     <div
                         key={index}
-                        className="w-full relative rounded-3xl overflow-hidden max-w-[75vw] md:max-w-96 mx-auto bg-gradient-to-r from-[#1D2235] to-[#121318] p-8"
+                        className="w-full relative rounded-3xl overflow-hidden max-w-[75vw] md:max-w-96 mx-auto bg-gradient-to-br from-white to-gray-50 border border-gray-100 shadow-xl shadow-gray-200/50 p-8"
                     >
                         <Rays />
                         <Beams />
@@ -52,16 +52,16 @@ export function Tshirts() {
                                 }}
                                 className="py-4 relative z-20"
                             >
-                                <h2 className="text-white text-2xl text-left font-bold">
+                                <h2 className="text-gray-900 text-2xl text-left font-bold font-anton tracking-wide">
                                     {tshirt.title}
                                 </h2>
-                                <p className="text-neutral-200 text-left mt-4">
+                                <p className="text-gray-600 text-left mt-4 font-outfit">
                                     {tshirt.description}
                                 </p>
                                 <a
                                     href="https://events.vitap.ac.in/e/vitopia-2025-t-shirts-70ec62a9-cbad-4124-938f-e59a699f1727"
                                     target="_blank"
-                                    className="inline-block bg-blue-500 text-white text-left mt-4 px-6 py-2 rounded hover:bg-blue-600 transition-colors"
+                                    className="inline-block bg-violet-600 text-white text-left mt-4 px-6 py-2 rounded-lg font-bold uppercase tracking-wider hover:bg-violet-700 transition-all font-anton"
                                 >
                                     Order Now
                                 </a>
