@@ -259,10 +259,10 @@ export default function Contact() {
                             transition={{ delay: 0.2 }}
                             className="border border-white/10 rounded-3xl overflow-hidden h-[600px] relative group"
                         >
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3619.792714666442!2d80.49996984234657!3d16.494371616339006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a35f27d40f21c55%3A0x1490eacd54859850!2sVIT-AP%20University!5e1!3m2!1sen!2sin!4v1768039268056!5m2!1sen!2sin" width="600" height="600" style={{border: '0'}} allowFullScreen={false} loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3619.792714666442!2d80.49996984234657!3d16.494371616339006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a35f27d40f21c55%3A0x1490eacd54859850!2sVIT-AP%20University!5e1!3m2!1sen!2sin!4v1768039268056!5m2!1sen!2sin" width="600" height="600" style={{ border: '0' }} allowFullScreen={false} loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
                             <img
                                 src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=1200&h=600&fit=crop"
-                                className="w-full h-full object-cover opacity-30 grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                                className="w-full h-full object-cover opacity-30 grayscale-0 group-hover:grayscale group-hover:scale-105 transition-all duration-700"
                                 alt="VIT-AP Campus"
                             />
                         </motion.div>

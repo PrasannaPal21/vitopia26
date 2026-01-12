@@ -78,7 +78,7 @@ const sportsData = [
         id: 6,
         title: "Basketball (Women)",
         description: "Team of 12 Players • Fee: ₹4000",
-        image: "https://images.unsplash.com/photo-1627627256672-0279553f9dbc?w=600&h=400&fit=crop",
+        image: "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&h=400&fit=crop",
         teamSize: "12 Players",
         registrationStatus: "open",
         registrationLink: "https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f",
@@ -182,7 +182,7 @@ const sportsData = [
         id: 14,
         title: "Table Tennis Doubles (Women)",
         description: "Team • Fee: ₹800",
-        image: "https://images.unsplash.com/photo-1528639599581-22956cf55132?w=600&h=400&fit=crop",
+        image: "https://images.unsplash.com/photo-1517137879134-48acfbe3be13?w=600&h=400&fit=crop",
         teamSize: "Team",
         registrationStatus: "open",
         registrationLink: "https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f",
@@ -563,30 +563,39 @@ function SportCard({ sport, index, onClick }) {
                 </div>
 
                 {/* Registration status badge */}
-                <div className={`absolute top-4 right-4 z-20 px-3 py-1 rounded-full text-xs font-medium backdrop-blur-md border ${sport.registrationStatus === 'open'
-                    ? 'bg-[var(--primary)]/20 text-[var(--primary)] border-[var(--primary)]/20'
-                    : 'bg-black/50 text-white/60 border-white/10'
-                    }`}>
-                    {sport.registrationStatus === 'open' ? 'Open' : 'Closed'}
-                </div>
+                {sport.registrationStatus === 'open' ? (
+                    <a
+                        href={sport.registrationLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="absolute top-4 right-4 z-20 px-4 py-2 rounded-full text-sm font-bold backdrop-blur-md border shadow-lg transition-transform hover:scale-105 bg-[var(--primary)] text-black border-[var(--primary)] shadow-[var(--primary)]/20"
+                    >
+                        Register
+                    </a>
+                ) : (
+                    <div className="absolute top-4 right-4 z-20 px-4 py-2 rounded-full text-sm font-bold backdrop-blur-md border shadow-lg transition-transform hover:scale-105 bg-black/80 text-white/60 border-white/10">
+                        Closed
+                    </div>
+                )}
 
                 {/* Content positioned at bottom with better spacing */}
                 <div className="absolute bottom-0 left-0 right-0 p-6 z-10 flex flex-col justify-end h-full">
                     <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-[var(--primary)] transition-colors duration-300 leading-tight">
                         {sport.title}
                     </h3>
-                    <p className="text-white/70 text-sm mb-4 line-clamp-2 leading-relaxed">
+                    <p className="text-gray-200 text-base mb-4 line-clamp-2 leading-relaxed font-medium">
                         {sport.description}
                     </p>
 
                     {/* Meta info */}
-                    <div className="flex items-center gap-4 text-xs font-medium text-white/50 border-t border-white/10 pt-4 mt-auto">
+                    <div className="flex items-center gap-4 text-sm font-semibold text-white/90 border-t border-white/20 pt-4">
                         <span className="flex items-center gap-1.5">
-                            <IconUsers size={16} className="text-[var(--primary)]" />
+                            <IconUsers size={18} className="text-[var(--primary)]" />
                             {sport.teamSize}
                         </span>
                         <span className="flex items-center gap-1.5">
-                            <IconCalendar size={16} className="text-[var(--secondary)]" />
+                            <IconCalendar size={18} className="text-[var(--secondary)]" />
                             {sport.date.split(',')[0]}
                         </span>
                     </div>

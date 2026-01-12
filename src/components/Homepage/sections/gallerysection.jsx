@@ -49,9 +49,9 @@ export default function GallerySection() {
                 transition={{ duration: 0.5 }}
             >
                 <h2 className="text-5xl md:text-7xl lg:text-8xl font-anton uppercase mb-4 leading-none">
-                    <span className="text-white/10">MEMORIES</span>
+                    <span className="text-white/80">MEMORIES</span>
                 </h2>
-                <div className="relative -mt-10 md:-mt-16 lg:-mt-20">
+                <div className="relative -mt-5 md:-mt-5 lg:-mt-5">
                     <h3 className="text-2xl md:text-3xl text-transparent bg-clip-text bg-gradient-to-r from-lime-400 to-green-400 font-outfit font-semibold uppercase tracking-[0.3em]">
                         Capture The Moment
                     </h3>
@@ -73,7 +73,7 @@ export default function GallerySection() {
                             <Image
                                 src={src}
                                 fill
-                                className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                                className="object-cover grayscale-0 group-hover:grayscale group-hover:scale-105 transition-all duration-500"
                                 alt="Gallery Memory"
                                 loading="lazy"
                             />
@@ -98,7 +98,7 @@ export default function GallerySection() {
                             <Image
                                 src={src}
                                 fill
-                                className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                                className="object-cover grayscale-0 group-hover:grayscale group-hover:scale-105 transition-all duration-500"
                                 alt="Gallery Memory"
                                 loading="lazy"
                             />

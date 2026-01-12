@@ -106,10 +106,10 @@ export default function CardSection() {
                 {item.backgroundImage && (
                   <div className="absolute inset-0 z-0 overflow-hidden">
                     <div
-                      className="absolute inset-0 bg-cover bg-center opacity-40 transition-transform duration-700 group-hover:scale-110 group-hover:opacity-50"
+                      className="absolute inset-0 bg-cover bg-center opacity-70 transition-transform duration-700 group-hover:scale-110 group-hover:opacity-100"
                       style={{ backgroundImage: `url(${item.backgroundImage})` }}
                     />
-                    <div className="absolute inset-0 bg-black/50 group-hover:bg-black/40 transition-colors duration-500" />
+                    <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-500" />
                   </div>
                 )}
 

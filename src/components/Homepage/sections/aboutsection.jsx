@@ -120,7 +120,7 @@ export default function AboutSection() {
                                 <Image
                                     src="/last_lineup/jonitha.avif"
                                     fill
-                                    className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500"
+                                    className="object-cover grayscale-0 group-hover:grayscale group-hover:scale-110 transition-all duration-500"
                                     alt="Jonita Gandhi Performance"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -136,7 +136,7 @@ export default function AboutSection() {
                                 <Image
                                     src="/vitap_drone.webp"
                                     fill
-                                    className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500"
+                                    className="object-cover grayscale-0 group-hover:grayscale group-hover:scale-110 transition-all duration-500"
                                     alt="VIT-AP Campus Aerial View"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

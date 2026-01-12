@@ -58,14 +58,14 @@ export default function HeroSection() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.3 }}
                     >
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-lime-400 to-green-400">SPORT</span>
-                        <span className="text-white/40 mx-1 md:mx-2 not-italic font-light text-xl md:text-4xl">×</span>
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">CULTURE</span>
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-lime-400 to-green-400 py-1 px-2">SPORT</span>
+                        <span className="mx-2 md:mx-4 text-3xl md:text-5xl font-light italic text-transparent bg-clip-text bg-gradient-to-r from-lime-400 via-white to-purple-400 drop-shadow-[0_0_10px_rgba(255,255,255,0.4)] px-2 py-1">×</span>
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 py-1 px-2">CULTURE</span>
                     </motion.div>
 
                     {/* Description */}
                     <motion.p
-                        className="max-w-2xl hidden md-visible mx-auto text-gray-400 text-base md:text-lg lg:text-xl font-outfit leading-relaxed mb-10"
+                        className="max-w-2xl hidden md:block mx-auto text-gray-400 text-base md:text-lg lg:text-xl font-outfit leading-relaxed mb-10"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.6, delay: 0.4 }}
@@ -82,10 +82,10 @@ export default function HeroSection() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.5 }}
                     >
-                        <button className="w-[80%] sm:w-auto px-10 py-4 bg-gradient-to-r from-lime-400 to-green-400 text-black font-anton text-base md:text-lg uppercase tracking-wider hover:from-lime-300 hover:to-green-300 transition-all duration-300 shadow-[0_0_30px_rgba(190,242,100,0.4)] hover:shadow-[0_0_50px_rgba(190,242,100,0.6)] hover:scale-105">
+                        <button className="w-[80%] cursor-pointer sm:w-auto px-10 py-4 bg-gradient-to-r from-lime-400 to-green-400 text-black font-anton text-base md:text-lg uppercase tracking-wider hover:from-lime-300 hover:to-green-300 transition-all duration-300 shadow-[0_0_30px_rgba(190,242,100,0.4)] hover:shadow-[0_0_50px_rgba(190,242,100,0.6)] hover:scale-105">
                             View Events
                         </button>
-                        <button className="w-[80%] sm:w-auto px-10 py-4 border-2 border-white/20 text-white font-anton text-base md:text-lg uppercase tracking-wider hover:bg-white/10 hover:border-white/40 transition-all duration-300 backdrop-blur-sm">
+                        <button className="w-[80%] cursor-pointer sm:w-auto px-10 py-4 border-2 border-white/20 text-white font-anton text-base md:text-lg uppercase tracking-wider hover:bg-white/10 hover:border-white/40 transition-all duration-300 backdrop-blur-sm">
                             Highlights
                         </button>
                     </motion.div>

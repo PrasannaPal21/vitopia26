@@ -149,30 +149,39 @@ function EventCard({ event, index, onClick }) {
                 </div>
 
                 {/* Registration status badge */}
-                <div className={`absolute top-4 right-4 z-20 px-3 py-1 rounded-full text-xs font-medium backdrop-blur-md border ${event.registrationStatus === 'open'
-                    ? 'bg-[var(--primary)]/20 text-[var(--primary)] border-[var(--primary)]/20'
-                    : 'bg-black/50 text-white/60 border-white/10'
-                    }`}>
-                    {event.registrationStatus === 'open' ? 'Open' : 'Closed'}
-                </div>
+                {event.registrationStatus === 'open' ? (
+                    <a
+                        href={event.registrationLink || '#'}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="absolute top-4 right-4 z-20 px-4 py-2 rounded-full text-sm font-bold backdrop-blur-md border shadow-lg transition-transform hover:scale-105 bg-[var(--primary)] text-black border-[var(--primary)] shadow-[var(--primary)]/20"
+                    >
+                        Register
+                    </a>
+                ) : (
+                    <div className="absolute top-4 right-4 z-20 px-4 py-2 rounded-full text-sm font-bold backdrop-blur-md border shadow-lg transition-transform hover:scale-105 bg-black/80 text-white/60 border-white/10">
+                        Closed
+                    </div>
+                )}
 
                 {/* Content positioned at bottom with better spacing */}
                 <div className="absolute bottom-0 left-0 right-0 p-6 z-10 flex flex-col justify-end h-full">
                     <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-[var(--secondary)] transition-colors duration-300 leading-tight">
                         {event.title}
                     </h3>
-                    <p className="text-white/70 text-sm mb-4 line-clamp-2 leading-relaxed">
+                    <p className="text-gray-200 text-base mb-4 line-clamp-2 leading-relaxed font-medium">
                         {event.description}
                     </p>
 
                     {/* Meta info */}
-                    <div className="flex items-center gap-4 text-xs font-medium text-white/50 border-t border-white/10 pt-4 mt-auto">
+                    <div className="flex items-center gap-4 text-sm font-semibold text-white/90 border-t border-white/20 pt-4">
                         <span className="flex items-center gap-1.5">
-                            <IconUsers size={16} className="text-[var(--secondary)]" />
+                            <IconUsers size={18} className="text-[var(--secondary)]" />
                             {event.teamSize}
                         </span>
                         <span className="flex items-center gap-1.5">
-                            <IconCalendar size={16} className="text-[var(--accent)]" />
+                            <IconCalendar size={18} className="text-[var(--accent)]" />
                             {event.date.split(',')[0]}
                         </span>
                     </div>
