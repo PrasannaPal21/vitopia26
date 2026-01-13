@@ -44,7 +44,7 @@ const bentoItems = [
   {
     title: "PRO-SHOW",
     description: "Star-studded nights you'll never forget.",
-    href: "/pronites",
+    href: "/",
     icon: <IconStarFilled className="w-14 h-14" />,
     color: "from-amber-400 to-orange-500",
     borderColor: "border-amber-400/30",
@@ -57,7 +57,7 @@ const bentoItems = [
 
 export default function CardSection() {
   return (
-    <section className="py-24 bg-[#050505] relative overflow-hidden border-y border-white/10">
+    <section id="card-section" className="py-24 bg-[#050505] relative overflow-hidden border-y border-white/10">
       {/* Background Grid */}
       <div className="absolute inset-0 opacity-5">
         <div

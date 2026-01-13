@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function HeroSection() {
     return (
@@ -65,7 +66,7 @@ export default function HeroSection() {
 
                     {/* Subtitle */}
                     <motion.div
-                        className="flex items-center justify-center gap-3 md:gap-6 text-2xl md:text-5xl lg:text-6xl font-black italic tracking-tight mb-8"
+                        className="flex items-center justify-center gap-3 md:gap-6 text-2xl md:text-5xl lg:text-6xl font-black italic tracking-tight mb-5"
                         initial={{ opacity: 0, y: 15 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.3 }}
@@ -77,7 +78,7 @@ export default function HeroSection() {
 
                     {/* Description */}
                     <motion.p
-                        className="max-w-2xl hidden md:block mx-auto text-gray-400 text-base md:text-lg lg:text-xl font-outfit leading-relaxed mb-10"
+                        className="max-w-2xl hidden md:block mx-auto text-gray-400 text-base md:text-lg lg:text-xl font-outfit leading-relaxed mb-5"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.6, delay: 0.4 }}
@@ -94,10 +95,10 @@ export default function HeroSection() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.5 }}
                     >
-                        <button className="w-[80%] cursor-pointer sm:w-auto px-10 py-4 bg-gradient-to-r from-lime-400 to-green-400 text-black font-anton text-base md:text-lg uppercase tracking-wider hover:from-lime-300 hover:to-green-300 transition-all duration-300 shadow-[0_0_30px_rgba(190,242,100,0.4)] hover:shadow-[0_0_50px_rgba(190,242,100,0.6)] hover:scale-105">
+                        <Link href={"/culturals"} className="w-[80%] cursor-pointer sm:w-auto px-10 py-4 bg-gradient-to-r from-lime-400 to-green-400 text-black font-anton text-base md:text-lg uppercase tracking-wider hover:from-lime-300 hover:to-green-300 transition-all duration-300 shadow-[0_0_30px_rgba(190,242,100,0.4)] hover:shadow-[0_0_50px_rgba(190,242,100,0.6)] hover:scale-105">
                             View Events
-                        </button>
-                        <button className="w-[80%] cursor-pointer sm:w-auto px-10 py-4 border-2 border-white/20 text-white font-anton text-base md:text-lg uppercase tracking-wider hover:bg-white/10 hover:border-white/40 transition-all duration-300 backdrop-blur-sm">
+                        </Link>
+                        <button onClick={() => { document.getElementById("card-section").scrollIntoView({ behavior: "smooth" })}} className="w-[80%] cursor-pointer sm:w-auto px-10 py-4 border-2 border-white/20 text-white font-anton text-base md:text-lg uppercase tracking-wider hover:bg-white/10 hover:border-white/40 transition-all duration-300 backdrop-blur-sm">
                             Highlights
                         </button>
                     </motion.div>

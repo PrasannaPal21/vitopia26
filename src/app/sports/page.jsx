@@ -325,7 +325,7 @@ const sportsData = [
         id: 25,
         title: "Shotput (Men)",
         description: "Individual • Fee: ₹400",
-        image: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=600&h=400&fit=crop",
+        image: "/sports/shotput-men.png",
         teamSize: "Individual",
         registrationStatus: "open",
         registrationLink: "https://events.vitap.ac.in/e/vitopia-sports-2026-ca922eb3-2265-4aca-bc56-5607cb39d99f",
@@ -559,7 +559,7 @@ function SportCard({ sport, index, onClick }) {
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     {/* Gradient overlay - strengthened for readability */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent opacity-90" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent opacity-90" />
                 </div>
 
                 {/* Registration status badge */}
