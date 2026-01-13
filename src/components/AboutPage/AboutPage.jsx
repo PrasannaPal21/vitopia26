@@ -31,8 +31,17 @@ export default function About() {
                     <div key={index} className="mb-20">
                         <h1 className="text-4xl font-bold text-center mb-3">{section.title}</h1>
                         <h2 className="text-xl text-center text-gray-400 mb-6">{section.subtitle}</h2>
-                        <div className="relative h-96 mb-6">
+                        <div className="relative h-96 mb-6 group">
                             <Image src={section.imgSrc} alt={section.imgAlt} layout="fill" objectFit="cover" className="rounded-lg" />
+                            {section.imgSrc === "/vitap_drone.webp" && (
+                                <Image
+                                    src="/night-vit.jpg"
+                                    alt={section.imgAlt}
+                                    layout="fill"
+                                    objectFit="cover"
+                                    className="rounded-lg absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                                />
+                            )}
                         </div>
                         <p className="text-lg leading-relaxed text-justify">{section.description}</p>
                     </div>

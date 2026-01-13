@@ -139,6 +139,12 @@ export default function AboutSection() {
                                     className="object-cover grayscale-0 group-hover:grayscale group-hover:scale-110 transition-all duration-500"
                                     alt="VIT-AP Campus Aerial View"
                                 />
+                                <Image
+                                    src="/night-vit.jpg"
+                                    fill
+                                    className="object-cover absolute inset-0 opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"
+                                    alt="VIT-AP Campus Night View"
+                                />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                                 <div className="absolute bottom-4 left-4 text-white font-anton text-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                     VIT-AP CAMPUS

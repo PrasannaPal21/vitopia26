@@ -268,7 +268,6 @@ const sportsData = [
         venue: "Kabaddi Mat",
         entryFee: "₹4000"
     },
-    // 21. Throwball Women
     {
         id: 21,
         title: "Throwball (Women)",
@@ -281,7 +280,6 @@ const sportsData = [
         venue: "Throwball Court",
         entryFee: "₹3000"
     },
-    // 22. Long Jump Men
     {
         id: 22,
         title: "Long Jump (Men)",
@@ -294,7 +292,6 @@ const sportsData = [
         venue: "Athletics Track",
         entryFee: "₹400"
     },
-    // 23. Long Jump Women
     {
         id: 23,
         title: "Long Jump (Women)",
@@ -307,7 +304,6 @@ const sportsData = [
         venue: "Athletics Track",
         entryFee: "₹400"
     },
-    // 24. Triple Jump Men
     {
         id: 24,
         title: "Triple Jump (Men)",
@@ -320,7 +316,6 @@ const sportsData = [
         venue: "Athletics Track",
         entryFee: "₹400"
     },
-    // 25. Shotput Men
     {
         id: 25,
         title: "Shotput (Men)",
