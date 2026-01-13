@@ -49,7 +49,7 @@ export default function HeroSection() {
                         transition={{ duration: 0.6, delay: 0.2 }}
                     >
                         <span className="text-3xl md:text-5xl font-anton text-transparent bg-clip-text bg-gradient-to-r from-lime-400 via-white to-lime-400 drop-shadow-[0_0_15px_rgba(163,230,53,0.5)] tracking-wider">
-                            22 - 24 FEB
+                            22 - 24 FEB 2026
                         </span>
                     </motion.div>
 
