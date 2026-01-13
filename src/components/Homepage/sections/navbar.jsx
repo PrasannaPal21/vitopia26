@@ -70,9 +70,14 @@ export default function Navbar() {
 
           {/* Actions */}
           <div className="hidden md:flex items-center gap-4">
-            <button className="text-sm cursor-pointer font-bold text-gray-400 hover:text-white uppercase transition-colors">
-              Login
-            </button>
+            {/* Date Display */}
+            <div className="hidden lg:flex flex-col items-end leading-none mr-2">
+              <span className="text-lime-400 font-anton text-xl tracking-wider">22-24</span>
+              <span className="text-white/80 font-anton text-sm tracking-widest">FEB</span>
+            </div>
+
+
+
 
             <div className="relative inline-block group scale-[0.85] origin-right">
               {/* Pulsing Glow Background */}
@@ -113,10 +118,10 @@ export default function Navbar() {
             <IconMenu2 size={32} />
           </button>
         </div>
-      </motion.nav>
+      </motion.nav >
 
       {/* Mobile Menu Overlay */}
-      <AnimatePresence>
+      < AnimatePresence >
         {mobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, x: "100%" }}
@@ -187,8 +192,9 @@ export default function Navbar() {
               <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b-2 border-r-2 border-lime-400 group-hover:w-8 group-hover:h-8 transition-all duration-300" />
             </motion.div>
           </motion.div>
-        )}
-      </AnimatePresence>
+        )
+        }
+      </AnimatePresence >
     </>
   );
 }

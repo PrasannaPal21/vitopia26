@@ -31,13 +31,25 @@ export default function HeroSection() {
                 >
                     {/* Badge */}
                     <motion.div
-                        className="inline-flex items-center border border-lime-400/30 rounded-full px-5 py-2 bg-lime-400/5 backdrop-blur-md mb-8"
+                        className="inline-flex items-center border border-lime-400/30 rounded-full px-5 py-2 bg-lime-400/5 backdrop-blur-md mb-2"
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.4, delay: 0.15 }}
                     >
                         <span className="text-lime-400 font-outfit font-semibold tracking-wider text-xs md:text-sm uppercase">
                             The Ultimate Fest of VIT-AP
+                        </span>
+                    </motion.div>
+
+                    {/* Date Display - Highly Visible */}
+                    <motion.div
+                        className="mb-6 flex flex-col items-center justify-center leading-none"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
+                    >
+                        <span className="text-3xl md:text-5xl font-anton text-transparent bg-clip-text bg-gradient-to-r from-lime-400 via-white to-lime-400 drop-shadow-[0_0_15px_rgba(163,230,53,0.5)] tracking-wider">
+                            22 - 24 FEB
                         </span>
                     </motion.div>
 

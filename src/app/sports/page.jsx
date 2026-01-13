@@ -544,7 +544,7 @@ function SportCard({ sport, index, onClick }) {
             transition={{ duration: 0.5, delay: index * 0.05 }}
             whileHover={{ y: -8 }}
             onClick={() => onClick(sport)}
-            className="group relative cursor-pointer h-[420px] w-full"
+            className="group relative cursor-pointer aspect-[2/3] w-full"
         >
             {/* Card glow effect */}
             <div className="absolute -inset-0.5 bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)] rounded-2xl opacity-0 group-hover:opacity-30 blur-xl transition-all duration-500" />
